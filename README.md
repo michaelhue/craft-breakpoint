@@ -11,7 +11,7 @@
 *   Customize your own screen presets or choose from a list of popular devices.
 *   Can be enabled or disabled at any time with the click of a button.
 *   Automatic zoom keeps the whole preview visible even at large screen sizes.
-*   Simple, client-friendly settings page.
+*   Simple, client-friendly settings page. [Screenshot](resources/settings.png)
 
 ## Installation
 
