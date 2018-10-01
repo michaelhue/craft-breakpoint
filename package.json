@@ -3,8 +3,10 @@
   "scripts": {
     "build-js": "rollup -c",
     "watch-js": "npm run build-js -- -w",
-    "build-css": "postcss src/web/assets/livepreview/src/css/LivePreview.css -o src/web/assets/livepreview/dist/LivePreview.min.css",
-    "watch-css": "npm run build-css -- --watch"
+    "build-css":
+      "postcss src/web/assets/livepreview/src/css/LivePreview.css -o src/web/assets/livepreview/dist/LivePreview.min.css",
+    "watch-css": "npm run build-css -- --watch",
+    "release": "npm run build-js && npm run build-css"
   },
   "dependencies": {},
   "devDependencies": {
