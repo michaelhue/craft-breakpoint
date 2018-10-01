@@ -37,4 +37,6 @@
   rows: settings.presets ?? []
 }) }}
 
-{% include 'breakpoint/_devices' %}
+{% if not ('presets' in overrides|keys) %}
+  {% include 'breakpoint/_devices' %}
+{% endif %}
