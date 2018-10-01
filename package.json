@@ -3,13 +3,12 @@
   "scripts": {
     "build-js": "rollup -c",
     "watch-js": "npm run build-js -- -w",
-    "build-css":
-      "postcss src/web/assets/livepreview/src/css/LivePreview.css -o src/web/assets/livepreview/dist/LivePreview.min.css",
+    "build-css": "postcss src/web/assets/livepreview/src/css/LivePreview.css -o src/web/assets/livepreview/dist/LivePreview.min.css",
     "watch-css": "npm run build-css -- --watch"
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "cssnano": "^4.1.4",
     "postcss-cli": "^6.0.0",
