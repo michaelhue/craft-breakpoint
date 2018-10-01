@@ -20,8 +20,9 @@ so, subject to the following conditions:
 4.  **Pay up.** Payment shall be made immediately upon receipt of any notice,
     prompt, reminder, or other message indicating that a payment is owed.
 
-5.  **Follow the law.** All use of the Software shall not violate any applicable
-    law or regulation, nor infringe the rights of any other person or entity.
+5.  **Follow the law.** All use of the Software shall not violate any
+    applicable law or regulation, nor infringe the rights of any other person
+    or entity.
 
 Failure to comply with the foregoing conditions will automatically and
 immediately result in termination of the permission granted hereby. This
