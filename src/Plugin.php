@@ -29,13 +29,6 @@ class Plugin extends CraftPlugin
 	public $hasCpSettings = true;
 
 	/**
-	 * A list of editor templates used for asset injection.
-	 *
-	 * @var array
-	 */
-	public $cpEditorTemplates = ['entries/_edit'];
-
-	/**
 	 * @inheritdoc
 	 */
 	public function init()
