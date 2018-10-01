@@ -150,6 +150,11 @@
       background-position: calc(100% - 3px) center;
     }
 
+    /* ie fix */
+    & select::-ms-expand {
+      display: none;
+    }
+
     /* toolbar items */
     & .bp-lp-presets {
       max-width: 100px;
