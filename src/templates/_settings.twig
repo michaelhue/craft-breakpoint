@@ -2,7 +2,7 @@
 
 {% macro overridden(setting) -%}
   {%- set setting = '<code>'~setting~'</code>' -%}
-  {{- 'This is being overridden by the {setting} config setting in your {file} config file.'|t('breakpoint', { setting: setting, file: handle ~ '.php' })|raw -}}
+  {{- 'This is being overridden by the {setting} config setting in your {file} config file.'|t('breakpoint', { setting: setting, file: 'breakpoint.php' })|raw -}}
 {%- endmacro %}
 
 {% from _self import overridden %}
