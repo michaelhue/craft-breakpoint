@@ -1,0 +1,34 @@
+{
+  "name": "michaelhue/craft-breakpoint",
+  "type": "craft-plugin",
+  "version": "1.0.0-beta.1",
+  "description":
+    "Preview and test your layouts on different screen sizes in Craft’s Live Preview.",
+  "keywords": ["craftcms", "craft-plugin", "live-preview"],
+  "authors": [
+    {
+      "name": "Michael Hüneburg",
+      "email": "hello@michaelhue.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/michaelhue/craft-breakpoint/issues",
+    "source": "https://github.com/michaelhue/craft-breakpoint",
+    "docs": "https://github.com/michaelhue/craft-breakpoint",
+    "rss": "https://github.com/michaelhue/craft-breakpoint/commits/master.atom"
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "craftcms/cms": "^3.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "michaelhue\\breakpoint\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Breakpoint",
+    "handle": "breakpoint",
+    "hasSettings": true
+  }
+}

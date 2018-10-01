@@ -1,0 +1,40 @@
+{% import "_includes/forms" as forms %}
+
+{% macro overridden(setting) -%}
+  {%- set setting = '<code>'~setting~'</code>' -%}
+  {{- 'This is being overridden by the {setting} config setting in your {file} config file.'|t('breakpoint', { setting: setting, file: handle ~ '.php' })|raw -}}
+{%- endmacro %}
+
+{% from _self import overridden %}
+
+{{ forms.editableTableField({
+  id: handle ~ '-presets',
+  name: 'presets',
+  label: 'Screen sizes'|t('breakpoint'),
+  instructions: 'Manage screen size presets available in Live Preview.'|t('breakpoint'),
+  addRowLabel: 'Add screen size'|t('breakpoint'),
+  static: 'presets' in overrides|keys,
+  warning: 'presets' in overrides|keys ? overridden('presets'),
+  errors: settings.getErrors('presets'),
+  cols: [
+    {
+      heading: 'Title'|t('app'),
+      type: 'singleline'
+    },
+    {
+      heading: 'Width'|t('breakpoint'),
+      type: 'number',
+      width: '20%',
+      code: true
+    },
+    {
+      heading: 'Height'|t('breakpoint'),
+      type: 'number',
+      width: '20%',
+      code: true
+    }
+  ],
+  rows: settings.presets ?? []
+}) }}
+
+{% include 'breakpoint/_devices' %}
