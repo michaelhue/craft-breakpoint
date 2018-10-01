@@ -35,6 +35,10 @@ Open the Control Panel and navigate to **Settings → Plugins** and install the 
 *   [Craft CMS](https://github.com/craftcms/cms/) `3.0.0` or later.
 *   A modern browser [supported by Craft](https://docs.craftcms.com/v3/requirements.html#cp-browser-requirements).
 
+## Licensing
+
+The license fee for this plugin is $29 (license + one year of updates) via the Craft Plugin Store, then $9 per year for updates.
+
 ## Usage
 
 ### Live Preview
