@@ -1,0 +1,80 @@
+{% import "_includes/forms" as forms %}
+
+{% set input %}
+<div id="breakpoint-devices">
+  {% spaceless %}
+  {% for group, presets in settings.devicePresets %}
+    <h6>{{ group|t('breakpoint') }}</h6>
+
+    {% for preset in presets %}
+      {%- set label = preset[0] -%}
+      {%- set x = preset[1] -%}
+      {%- set y = preset[2] -%}
+      <button class="btn dashed" type="button" data-label="{{ label }}" data-x="{{ x }}" data-y="{{ y }}">
+        {{- label -}}
+      </button>
+    {% endfor %}
+  {% endfor %}
+  {% endspaceless %}
+</div>
+{% endset %}
+
+{{ forms.field({
+  label: 'Device presets'|t('breakpoint'),
+  instructions: 'Click on a device name to add it to your custom screen sizes.'|t('breakpoint')
+}, input) }}
+
+{% css %}
+#settings-breakpoint-devices button {
+  display: inline-block;
+  margin: 0 4px 4px 0;
+  height: auto;
+  padding: 6px;
+}
+{% endcss %}
+
+{% js %}
+;(function breakpointDeviceSelector($) {
+  var $items = $("#settings-breakpoint-devices button");
+  var $table = $("#settings-breakpoint-presets");
+  var table = $table.data("editable-table");
+
+  if (!$table || !table) return;
+
+  $("#settings-breakpoint-devices").on("click", "button", function(e) {
+    table.addRow();
+
+    var $p = $(this);
+    var $row = $table.find("tbody tr").last();
+    var $inputs = $row.find("td.textual textarea");
+
+    $inputs.eq(0).val($p.data("label"));
+    $inputs.eq(1).val($p.data("x") || 0);
+    $inputs.eq(2).val($p.data("y") || 0);
+
+    update();
+  });
+
+  function update() {
+    var existing = [];
+
+    $table.find('tbody tr').each(function() {
+      existing.push( $(this).find('td.textual:first-child textarea').val() );
+    });
+
+    $items.each(function() {
+      if (existing.indexOf( $(this).data('label') ) === -1) {
+        $(this).attr('disabled', false).removeClass('disabled');
+      } else {
+        $(this).attr('disabled', true).addClass('disabled');
+      }
+    });
+  }
+
+  var deferredUpdate = function() { setTimeout(update, 0); };
+
+  $table.on('mouseup change', 'tbody', deferredUpdate);
+  update();
+
+}(jQuery));
+{% endjs %}

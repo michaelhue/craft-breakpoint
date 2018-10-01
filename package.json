@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "build-js": "rollup -c",
+    "watch-js": "npm run build-js -- -w",
+    "build-css":
+      "postcss src/web/assets/livepreview/src/css/LivePreview.css -o src/web/assets/livepreview/dist/LivePreview.min.css",
+    "watch-css": "npm run build-css -- --watch",
+    "release": "npm run build-js && npm run build-css"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "cssnano": "^4.1.4",
+    "postcss-cli": "^6.0.0",
+    "postcss-preset-env": "^6.0.7",
+    "postcss-url": "^8.0.0",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-uglify": "^6.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 29",
+    "Firefox >= 28",
+    "Safari >= 9",
+    "IE >= 11",
+    "Edge >= 12",
+    "not dead"
+  ]
+}

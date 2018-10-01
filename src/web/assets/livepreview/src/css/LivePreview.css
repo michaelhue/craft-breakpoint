@@ -1,0 +1,191 @@
+:root {
+  --bg: #f7f7f7;
+  --text: #576575;
+  --highlight: #0d99f2;
+  --input-padding: 2px;
+  --input-size: 12px;
+  --input-height: 16px;
+}
+
+.bp-lp-drag {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  right: -20px;
+  bottom: 0;
+  background-color: red;
+}
+
+/* live preview root */
+.bp-lp-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  overflow: hidden;
+
+  @nest .dragging & {
+    pointer-events: none;
+  }
+
+  & .bp-lp-stage {
+    position: absolute;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  &.bp-lp-active .bp-lp-stage {
+    top: 38px;
+    left: 20px;
+    right: 20px;
+    bottom: 15px;
+  }
+
+  & .bp-lp-dragger {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    outline: 2px solid green;
+    z-index: 10;
+  }
+
+  & .bp-lp-viewport {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    align-self: center;
+    min-width: 50px;
+    min-height: 50px;
+    background: #fff;
+    transform-origin: 50% 0;
+    transform: scale(1);
+  }
+  &.bp-lp-active .bp-lp-viewport {
+    outline: 1px solid rgba(0, 0, 20, 0.2);
+    box-shadow: 0 1px 16px rgba(0, 0, 20, 0.2);
+  }
+
+  /* toolbar */
+  & .bp-lp-toolbar {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px;
+    flex: 0 0 auto;
+    font-size: var(--input-size);
+    color: var(--text);
+    height: 38px;
+    z-index: 20;
+
+    & > * {
+      margin: 0 7px;
+    }
+
+    & > small {
+      display: block;
+      margin: 0 -4px;
+      opacity: 0.6;
+      pointer-events: none;
+      font-size: 14px;
+    }
+
+    & input,
+    & select,
+    & button {
+      display: block;
+      padding: 3px 4px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      font: inherit;
+      line-height: 1;
+      height: 24px;
+      min-width: 24px;
+      background: transparent no-repeat 50% 50%;
+      box-sizing: border-box;
+      text-align: center;
+      color: inherit;
+
+      &[disabled] {
+        opacity: 0.5;
+      }
+      &:not([disabled]) {
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+      &:not([disabled]):active {
+        background-color: rgba(0, 0, 0, 0.08);
+      }
+      &:not([disabled]):hover {
+        border-color: color-mod(var(--text) alpha(25%));
+      }
+      &:not([disabled]):focus {
+        border-color: var(--highlight);
+        outline: none;
+      }
+    }
+
+    & input {
+      width: 42px;
+    }
+    & input:not([disabled]):focus,
+    & input:not([disabled]):active {
+      background-color: #fff;
+    }
+
+    & select {
+      appearance: none;
+      padding-right: 13px;
+      background-image: url("../img/chevron.svg");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 3px) center;
+    }
+
+    /* ie fix */
+    & select::-ms-expand {
+      display: none;
+    }
+
+    /* toolbar items */
+    & .bp-lp-presets {
+      max-width: 100px;
+    }
+
+    & .bp-lp-rotate {
+      background-image: url("../img/rotate.svg");
+    }
+  }
+  &:not(.bp-lp-active) .bp-lp-toolbar {
+    display: none;
+  }
+}
+
+/* live preview trigger */
+.lp-editor .bp-lp-trigger {
+  position: relative;
+  width: 32px;
+  margin: 0 5px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../img/devices.svg") no-repeat center center;
+  }
+  &.active::after,
+  &:active::after {
+    opacity: 0.6;
+  }
+}

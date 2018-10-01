@@ -1,0 +1,6 @@
+resources/ export-ignore
+src/web/assets/livepreview/src/ export-ignore
+.*rc export-ignore
+*.config.js export-ignore
+.editorconfig export-ignore
+package*.json export-ignore
