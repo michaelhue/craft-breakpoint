@@ -1,3 +1,5 @@
+![Icon](src/icon.svg)
+
 # Breakpoint for Craft CMS 3
 
 > Preview and test your responsive layouts on various screen sizes in Crafts Live Preview.
