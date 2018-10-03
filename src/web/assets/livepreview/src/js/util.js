@@ -2,35 +2,6 @@ import $ from "jquery";
 import Craft from "craft";
 
 /**
- * Convert an array-like object to array.
- * @param {Array|Object} obj
- * @return {Array}
- */
-export const toArray = obj => $.map(obj, x => [x]);
-
-/**
- * Store data in session storage.
- * @param {String} key
- * @param {*} data
- */
-export const store = (key, data) =>
-  (window.sessionStorage[key] = JSON.stringify(data));
-
-/**
- * Retrieve data from session storage.
- * @param {String} key
- * @param {Object} fallback
- * @return {Object}
- */
-export const retrieve = (key, fallback = {}) => {
-  try {
-    return $.extend({}, fallback, JSON.parse(window.sessionStorage[key]));
-  } catch (err) {
-    return fallback;
-  }
-};
-
-/**
  * Translation helper.
  * @param {String} msg
  * @return {String}
