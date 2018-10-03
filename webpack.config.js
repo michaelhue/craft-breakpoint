@@ -18,6 +18,9 @@ module.exports = {
     vue: "Vue",
     vuex: "Vuex"
   },
+  resolve: {
+    extensions: [".vue", ".js", ".css"]
+  },
   devtool: "source-map",
   module: {
     rules: [
