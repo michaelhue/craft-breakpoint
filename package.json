@@ -1,24 +1,26 @@
 {
   "private": true,
   "scripts": {
-    "build-js": "rollup -c",
-    "watch-js": "npm run build-js -- -w",
-    "build-css":
-      "postcss src/web/assets/livepreview/src/css/LivePreview.css -o src/web/assets/livepreview/dist/LivePreview.min.css",
-    "watch-css": "npm run build-css -- --watch",
-    "release": "npm run build-js && npm run build-css"
+    "dev": "webpack-cli --mode=development --watch",
+    "release": "webpack-cli --mode=production --optimize-minimize --hide-modules"
   },
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
     "cssnano": "^4.1.4",
+    "mini-css-extract-plugin": "^0.4.3",
     "postcss-cli": "^6.0.0",
-    "postcss-preset-env": "^6.0.7",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.0.10",
     "postcss-url": "^8.0.0",
-    "rollup": "^0.66.2",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-uglify": "^6.0.0"
+    "url-loader": "^1.1.1",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   },
   "browserslist": [
     "Chrome >= 29",

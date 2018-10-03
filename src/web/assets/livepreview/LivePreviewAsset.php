@@ -35,9 +35,9 @@ class LivePreviewAsset extends AssetBundle
 
 		$this->sourcePath = __DIR__ . '/dist';
 
-		$this->css = ['live-preview.min.css'];
+		$this->css = ['live-preview.css'];
 
-		$this->js = ['live-preview.min.js'];
+		$this->js = ['live-preview.js'];
 	}
 
 	/**
