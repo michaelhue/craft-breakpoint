@@ -9,6 +9,8 @@ namespace michaelhue\breakpoint\web\assets\livepreview;
 
 use craft\web\AssetBundle;
 use craft\web\View;
+use craft\web\assets\cp\CpAsset;
+use craft\web\assets\vue\VueAsset;
 use michaelhue\breakpoint\Plugin;
 
 /**
@@ -27,14 +29,15 @@ class LivePreviewAsset extends AssetBundle
 		parent::init();
 
 		$this->depends = [
-			'craft\web\assets\cp\CpAsset',
+			CpAsset::class,
+			VueAsset::class,
 		];
 
 		$this->sourcePath = __DIR__ . '/dist';
 
-		$this->css = ['LivePreview.min.css'];
+		$this->css = ['live-preview.min.css'];
 
-		$this->js = ['LivePreview.min.js'];
+		$this->js = ['live-preview.min.js'];
 	}
 
 	/**
