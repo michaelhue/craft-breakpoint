@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="style"
+    :style="enabledStyle"
     class="breakpoint-viewport" />
 </template>
 
@@ -23,15 +23,15 @@ export default {
 
     style() {
       const { x, y } = this.size;
-      const transform = "scale(" + this.scale.toFixed(3) + ")";
+      return {
+        width: x ? `${x}px` : "100%",
+        height: y ? `${y}px` : "100%",
+        transform: `scale(${this.scale})`
+      };
+    },
 
-      return !this.enabled
-        ? {}
-        : {
-            width: x ? `${x}px` : "100%",
-            height: y ? `${y}px` : "100%",
-            transform
-          };
+    enabledStyle() {
+      return this.enabled ? this.style : null;
     }
   },
 
