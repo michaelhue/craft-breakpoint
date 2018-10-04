@@ -5,8 +5,11 @@ import Craft from "craft";
  * @var {Object}
  */
 export default {
-  rotate: Craft.t("breakpoint", "Rotate"),
-  width: Craft.t("breakpoint", "Width"),
   height: Craft.t("breakpoint", "Height"),
-  toggle: Craft.t("breakpoint", "Toggle screen sizes")
+  presets: Craft.t("breakpoint", "Presets"),
+  responsive: Craft.t("breakpoint", "Responsive"),
+  rotate: Craft.t("breakpoint", "Rotate"),
+  toggle: Craft.t("breakpoint", "Toggle screen sizes"),
+  width: Craft.t("breakpoint", "Width"),
+  zoom: Craft.t("breakpoint", "Zoom")
 };
