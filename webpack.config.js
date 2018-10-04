@@ -9,7 +9,9 @@ module.exports = {
   output: {
     path: resolve("livepreview/dist"),
     filename: "[name].js",
-    library: "BreakpointLivePreview"
+    library: "BreakpointLivePreview",
+    libraryExport: "default",
+    libraryTarget: "umd"
   },
   externals: {
     craft: "Craft",
