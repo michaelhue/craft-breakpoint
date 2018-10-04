@@ -4,6 +4,7 @@
     class="breakpoint-editor">
     <EditorToolbar v-if="enabled" />
     <EditorStage>
+      <EditorDraggable v-if="enabled" />
       <EditorViewport :iframe="iframe" />
     </EditorStage>
   </div>
@@ -11,6 +12,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import EditorDraggable from "./EditorDraggable";
 import EditorToolbar from "./EditorToolbar";
 import EditorStage from "./EditorStage";
 import EditorViewport from "./EditorViewport";
@@ -19,6 +21,7 @@ export default {
   name: "BreakpointEditor",
 
   components: {
+    EditorDraggable,
     EditorStage,
     EditorToolbar,
     EditorViewport

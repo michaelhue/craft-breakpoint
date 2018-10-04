@@ -39,6 +39,11 @@ export function createStore(initial = {}) {
           ? { ...getters.presetSize }
           : { ...getters.customSize },
 
+      screenSize: (_, getters) => ({
+        x: getters.size.x * getters.scale,
+        y: getters.size.y * getters.scale
+      }),
+
       zoom: state => state.zoomLevels[state.selectedZoom] || 0,
 
       fitScale: (state, getters) =>
