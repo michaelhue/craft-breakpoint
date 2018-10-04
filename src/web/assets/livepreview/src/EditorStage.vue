@@ -16,6 +16,10 @@ export default {
     this.update();
   },
 
+  beforeUpdate() {
+    this.update();
+  },
+
   beforeDestroy() {
     Garnish.$win.off("resize", this.update);
   },
