@@ -5,27 +5,38 @@
     <ToolbarSelect
       :label="locale.presets"
       :options="presetOptions"
-      :default-option="locale.responsive" />
+      :default-option="locale.responsive"
+      @change="setPreset" />
+
     <ToolbarInput
       :label="locale.width"
-      :value="0"
-      @change="onSizeChange" />
+      :value="size.x"
+      :disabled="hasPreset"
+      @change="x => setCustomSize({ x })" />
+
     <small role="presentation">×</small>
+
     <ToolbarInput
       :label="locale.height"
-      :value="0" />
+      :value="size.y"
+      :disabled="hasPreset"
+      @change="y => setCustomSize({ y })" />
+
     <ToolbarSelect
       :label="locale.zoom"
       :options="zoomOptions"
-      :default-option="locale.zoom" />
+      :default-option="`${locale.fit} (${fitZoom})`"
+      @change="setZoom" />
+
     <ToolbarButton
       :label="locale.rotate"
-      :icon="iconRotate" />
+      :icon="iconRotate"
+      @click="rotate()" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import locale from "./locale";
 import ToolbarButton from "./ToolbarButton";
 import ToolbarInput from "./ToolbarInput";
@@ -48,15 +59,16 @@ export default {
     };
   },
 
-  computed: {
-    ...mapGetters(["presetOptions", "zoomOptions"])
-  },
+  computed: mapGetters([
+    "presetOptions",
+    "zoomOptions",
+    "size",
+    "hasPreset",
+    "fitScale",
+    "fitZoom"
+  ]),
 
-  methods: {
-    onSizeChange(x) {
-      console.log("CHANGE", x);
-    }
-  }
+  methods: mapActions(["setPreset", "setZoom", "setCustomSize", "rotate"])
 };
 </script>
 
@@ -104,7 +116,7 @@ export default {
     color: inherit;
 
     &[disabled] {
-      opacity: 0.5;
+      opacity: 0.6;
     }
     &:not([disabled]) {
       background-color: rgba(0, 0, 0, 0.03);
@@ -122,6 +134,7 @@ export default {
   }
   & select {
     appearance: none;
+    padding-left: 4px;
     padding-right: 14px;
     background-image: url("./img/chevron.svg");
     background-repeat: no-repeat;

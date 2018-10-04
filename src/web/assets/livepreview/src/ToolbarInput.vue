@@ -4,15 +4,13 @@
     :aria-label="label"
     :value="value"
     :maxlength="maxlength"
+    :disabled="disabled"
     type="text"
     pattern="[0-9]+"
     @change="onChange"
     @focus="onFocus"
-    @mouseup.prevent
-    @keydown.shift.up.prevent="modify(+10)"
-    @keydown.shift.down.prevent="modify(-10)"
-    @keydown.up.prevent="modify(+1)"
-    @keydown.down.prevent="modify(-1)">
+    @keydown.up.prevent="modify($event, +1)"
+    @keydown.down.prevent="modify($event, -1)">
 </template>
 
 <script>
@@ -31,20 +29,37 @@ export default {
     maxlength: {
       type: Number,
       default: 4
+    },
+    min: {
+      type: Number,
+      default: 100
+    },
+    max: {
+      type: Number,
+      default: 9999
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
 
   methods: {
-    modify(mod) {
-      this.$emit("change", this.value + mod);
+    modify(e, delta) {
+      const mod = e.shiftKey ? 10 : 1;
+      this.$emit("change", this.sanizitedValue() + delta * mod);
     },
 
-    onChange(e) {
-      this.$emit("change", parseInt(e.target.value));
+    onChange() {
+      this.$emit("change", this.sanizitedValue());
     },
 
     onFocus() {
       this.$el.select();
+    },
+
+    sanizitedValue() {
+      return parseInt(this.$el.value);
     }
   }
 };

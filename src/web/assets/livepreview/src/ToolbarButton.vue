@@ -1,7 +1,8 @@
 <template>
   <button
     :title="label"
-    type="button">
+    type="button"
+    @click="$emit('click')">
     <img
       :src="icon"
       role="presentation"

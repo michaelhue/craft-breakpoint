@@ -1,14 +1,15 @@
 <template>
   <select
     :title="label"
-    :disabled="disabled">
+    :disabled="disabled"
+    @change="onChange">
     <option :value="-1">{{ defaultOption }}</option>
     <option
       v-if="!disabled"
       disabled>───</option>
     <option
       v-for="(opt, index) in options"
-      :value="index" 
+      :value="index"
       :key="opt">{{ opt }}</option>
   </select>
 </template>
@@ -39,6 +40,12 @@ export default {
   computed: {
     disabled() {
       return this.options.length === 0;
+    }
+  },
+
+  methods: {
+    onChange(e) {
+      this.$emit("change", e.target.value);
     }
   }
 };

@@ -5,8 +5,31 @@
 </template>
 
 <script>
+import Garnish from "garnish";
+import { mapActions } from "vuex";
+
 export default {
-  name: "EditorStage"
+  name: "EditorStage",
+
+  mounted() {
+    Garnish.$win.on("resize", this.update);
+    this.update();
+  },
+
+  beforeDestroy() {
+    Garnish.$win.off("resize", this.update);
+  },
+
+  methods: {
+    ...mapActions(["updateStageSize"]),
+
+    update() {
+      this.updateStageSize({
+        x: this.$el.offsetWidth,
+        y: this.$el.offsetHeight
+      });
+    }
+  }
 };
 </script>
 

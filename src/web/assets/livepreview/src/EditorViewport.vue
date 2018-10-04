@@ -1,8 +1,12 @@
 <template>
-  <div class="breakpoint-viewport"/>
+  <div
+    :style="style"
+    class="breakpoint-viewport" />
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "EditorViewport",
 
@@ -10,7 +14,24 @@ export default {
     iframe: {
       type: Object,
       required: true,
-      validate: obj => obj instanceof HTMLElement
+      validate: x => x instanceof HTMLElement
+    }
+  },
+
+  computed: {
+    ...mapGetters(["enabled", "size", "scale"]),
+
+    style() {
+      const { x, y } = this.size;
+      const transform = "scale(" + this.scale.toFixed(3) + ")";
+
+      return !this.enabled
+        ? {}
+        : {
+            width: x ? `${x}px` : "100%",
+            height: y ? `${y}px` : "100%",
+            transform
+          };
     }
   },
 
