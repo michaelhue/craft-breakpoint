@@ -7,10 +7,10 @@
     :disabled="disabled"
     type="text"
     pattern="[0-9]+"
-    @change="onChange"
-    @focus="onFocus"
-    @keydown.up.prevent="modify($event, +1)"
-    @keydown.down.prevent="modify($event, -1)">
+    @focus="e => e.target.focus()"
+    @change="change()"
+    @keydown.up.prevent="change(+1, $event.shiftKey)"
+    @keydown.down.prevent="change(-1, $event.shiftKey)">
 </template>
 
 <script>
@@ -30,14 +30,6 @@ export default {
       type: Number,
       default: 4
     },
-    min: {
-      type: Number,
-      default: 100
-    },
-    max: {
-      type: Number,
-      default: 9999
-    },
     disabled: {
       type: Boolean,
       default: false
@@ -45,21 +37,9 @@ export default {
   },
 
   methods: {
-    modify(e, delta) {
-      const mod = e.shiftKey ? 10 : 1;
-      this.$emit("change", this.sanizitedValue() + delta * mod);
-    },
-
-    onChange() {
-      this.$emit("change", this.sanizitedValue());
-    },
-
-    onFocus() {
-      this.$el.select();
-    },
-
-    sanizitedValue() {
-      return parseInt(this.$el.value);
+    change(offset = 0, shift = false) {
+      const mod = shift ? 10 : 1;
+      this.$emit("change", offset * mod + parseInt(this.$el.value));
     }
   }
 };
