@@ -5,6 +5,7 @@ import Craft from "craft";
  * @var {Object}
  */
 export default {
+  fit: Craft.t("breakpoint", "Fit"),
   height: Craft.t("breakpoint", "Height"),
   presets: Craft.t("breakpoint", "Presets"),
   responsive: Craft.t("breakpoint", "Responsive"),
