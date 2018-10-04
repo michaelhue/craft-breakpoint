@@ -1,6 +1,6 @@
 <template>
-  <div 
-    :class="{ enabled }" 
+  <div
+    :class="{ enabled }"
     class="breakpoint-editor">
     <EditorToolbar v-if="enabled" />
     <EditorStage>
@@ -16,7 +16,7 @@ import EditorStage from "./EditorStage";
 import EditorViewport from "./EditorViewport";
 
 export default {
-  name: "LivePreviewEditor",
+  name: "BreakpointEditor",
 
   components: {
     EditorStage,

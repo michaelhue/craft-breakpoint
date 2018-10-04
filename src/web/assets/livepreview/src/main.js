@@ -1,7 +1,7 @@
 import Vue from "vue";
 import { createStore } from "./store";
-import LivePreviewButton from "./LivePreviewButton";
-import LivePreviewEditor from "./LivePreviewEditor";
+import BreakpointButton from "./BreakpointButton";
+import BreakpointEditor from "./BreakpointEditor";
 
 /**
  * Create button vnode.
@@ -11,7 +11,7 @@ import LivePreviewEditor from "./LivePreviewEditor";
 function createButton(store, props = {}) {
   return new Vue({
     store,
-    render: h => h(LivePreviewButton, { props })
+    render: h => h(BreakpointButton, { props })
   });
 }
 
@@ -24,7 +24,7 @@ function createButton(store, props = {}) {
 function createEditor(store, props = {}) {
   return new Vue({
     store,
-    render: h => h(LivePreviewEditor, { props })
+    render: h => h(BreakpointEditor, { props })
   });
 }
 

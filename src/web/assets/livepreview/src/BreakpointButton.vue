@@ -16,7 +16,7 @@ import { mapActions, mapGetters } from "vuex";
 import locale from "./locale";
 
 export default {
-  name: "LivePreviewButton",
+  name: "BreakpointButton",
 
   data() {
     return {
