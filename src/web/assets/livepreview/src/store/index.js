@@ -1,12 +1,11 @@
 import { Store } from "vuex";
 
 const state = {
-  enabled: false,
+  enabled: true,
   presets: [],
   zoomLevels: [],
   currentPreset: -1,
   zoom: -1,
-  userSize: { x: 0, y: 0 },
   x: 0,
   y: 0,
   presetX: 0,
@@ -21,7 +20,11 @@ export function createStore(initial = {}) {
     state: { ...state, ...initial },
 
     getters: {
-      enabled: state => state.enabled
+      enabled: state => state.enabled,
+
+      presetOptions: state => state.presets.map(([name]) => name),
+
+      zoomOptions: state => state.zoomLevels.map(x => Math.round(x * 100) + "%")
     },
 
     actions: {
@@ -31,8 +34,8 @@ export function createStore(initial = {}) {
     },
 
     mutations: {
-      setEnabled(state, toggle) {
-        state.enabled = !!toggle;
+      setEnabled(state, value) {
+        state.enabled = !!value;
       }
     }
   });

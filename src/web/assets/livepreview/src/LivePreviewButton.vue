@@ -1,12 +1,12 @@
 <template>
   <button
     :class="{ active: enabled }"
-    :title="title"
+    :title="label"
     class="breakpoint-button btn"
     type="button"
     @click="toggle">
-    <img 
-      src="./img/devices.svg" 
+    <img
+      src="./img/devices.svg"
       alt="Devices icon">
   </button>
 </template>
@@ -20,7 +20,7 @@ export default {
 
   data() {
     return {
-      title: locale.toggle
+      label: locale.toggle
     };
   },
 

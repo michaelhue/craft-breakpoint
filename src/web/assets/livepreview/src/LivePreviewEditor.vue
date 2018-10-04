@@ -1,5 +1,7 @@
 <template>
-  <div class="breakpoint-editor" :class="{ enabled }">
+  <div 
+    :class="{ enabled }" 
+    class="breakpoint-editor">
     <EditorToolbar v-if="enabled" />
     <EditorStage>
       <EditorViewport :iframe="iframe" />
@@ -54,6 +56,6 @@ export default {
   right: 20px;
   bottom: 20px;
   transition-property: top, left, right, bottom;
-  transition-duration: .1s;
+  transition-duration: 0.1s;
 }
 </style>
