@@ -9,7 +9,7 @@ import createStoragePlugin from "./storage";
  * @type {Object}
  */
 const state = {
-  enabled: true,
+  enabled: false,
   presets: [],
   zoomLevels: [],
   selectedPreset: -1,
@@ -39,6 +39,7 @@ export function createStore(initial = {}) {
       createStoragePlugin({
         key: "BreakpointLivePreview",
         paths: [
+          "enabled",
           "selectedPreset",
           "selectedZoom",
           "presetX",

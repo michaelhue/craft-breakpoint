@@ -9,7 +9,7 @@
 
 ### Changed
 
--   Improved front-end performance by reducing DOM updates.
+-   Remember if the device preview is enabled or disabled during a session.
 
 ## 1.0.0 - 2018-10-01
 
