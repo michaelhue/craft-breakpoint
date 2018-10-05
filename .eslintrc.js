@@ -12,5 +12,5 @@ module.exports = {
     "plugin:prettier/recommended",
     "eslint:recommended"
   ],
-  plugins: ["vue"]
+  plugins: ["prettier", "vue"]
 };
