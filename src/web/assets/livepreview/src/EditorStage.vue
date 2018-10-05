@@ -6,17 +6,19 @@
 
 <script>
 import Garnish from "garnish";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "EditorStage",
 
-  mounted() {
-    Garnish.$win.on("resize", this.update);
-    this.update();
+  computed: mapGetters(["enabled"]),
+
+  watch: {
+    enabled: "update"
   },
 
-  beforeUpdate() {
+  mounted() {
+    Garnish.$win.on("resize", this.update);
     this.update();
   },
 
