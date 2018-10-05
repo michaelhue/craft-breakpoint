@@ -2,7 +2,7 @@
   <button
     :class="{ active: enabled }"
     :title="label"
-    class="breakpoint-button btn"
+    class="bp-button btn"
     type="button"
     @click="toggle"
   >
@@ -33,15 +33,15 @@ export default {
 </script>
 
 <style scoped>
-button {
+.bp-button {
   position: relative;
   width: 32px;
   margin: 0 5px;
   padding: 7px;
 }
 
-button.active > *,
-button:active > * {
+.bp-button.active > *,
+.bp-button:active > * {
   opacity: 0.6;
 }
 </style>

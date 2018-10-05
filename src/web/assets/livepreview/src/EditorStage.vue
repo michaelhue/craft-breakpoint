@@ -1,5 +1,5 @@
 <template>
-  <div class="breakpoint-stage">
+  <div class="bp-stage">
     <slot />
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.breakpoint-stage {
+.bp-stage {
   position: absolute;
   z-index: 30;
   top: 0;

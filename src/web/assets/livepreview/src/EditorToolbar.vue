@@ -1,6 +1,6 @@
 <template>
   <div
-    class="breakpoint-toolbar"
+    class="bp-toolbar"
     role="toolbar"
   >
     <ToolbarSelect
@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style scoped>
-.breakpoint-toolbar {
+.bp-toolbar {
   position: relative;
   box-sizing: border-box;
   display: flex;
