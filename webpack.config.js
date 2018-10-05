@@ -1,30 +1,44 @@
 const MiniCssExtract = require("mini-css-extract-plugin");
+const OptimizeCSSAssets = require("optimize-css-assets-webpack-plugin");
+const UglifyJs = require("uglifyjs-webpack-plugin");
 const VueLoader = require("vue-loader/lib/plugin");
 const resolve = p => require("path").resolve("src/web/assets", p);
 
 module.exports = env => ({
   mode: env.production ? "production" : "development",
+  target: "web",
+  devtool: "source-map",
   entry: {
     "live-preview": resolve("livepreview/src/main.js")
+  },
+  resolve: {
+    extensions: [".vue", ".js", ".css"]
   },
   output: {
     path: resolve("livepreview/dist"),
     filename: "[name].js",
     library: "BreakpointLivePreview",
     libraryExport: "default",
-    libraryTarget: "umd"
+    libraryTarget: "var"
   },
   externals: {
     craft: "Craft",
     garnish: "Garnish",
-    jquery: "jQuery",
     vue: "Vue",
     vuex: "Vuex"
   },
-  resolve: {
-    extensions: [".vue", ".js", ".css"]
+  optimization: {
+    nodeEnv: env.production ? "production" : "development",
+    minimize: env.production,
+    minimizer: [
+      new UglifyJs({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCSSAssets()
+    ]
   },
-  devtool: "source-map",
   module: {
     rules: [
       {
@@ -49,6 +63,8 @@ module.exports = env => ({
     new MiniCssExtract({
       filename: "[name].css"
     }),
-    new VueLoader()
+    new VueLoader({
+      preserveWhitespace: false
+    })
   ]
 });
