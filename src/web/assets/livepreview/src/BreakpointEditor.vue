@@ -58,8 +58,6 @@ export default {
   left: 20px;
   right: 20px;
   bottom: 20px;
-  transition-property: top, left, right, bottom;
-  transition-duration: 0.1s;
 }
 
 .bp-editor.dragging >>> .bp-viewport {
