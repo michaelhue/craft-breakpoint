@@ -5,6 +5,7 @@
 ### Added
 
 -   Drag to resize viewport in responsive mode.
+-   Step through presets and zoom levels using the ← and → arrow keys while either field is in focus.
 -   Link to plugin documentation.
 
 ### Changed
