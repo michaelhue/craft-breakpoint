@@ -84,3 +84,16 @@ export function rotate({ commit, getters }) {
   const action = getters.hasPreset ? "setPresetSize" : "setCustomSize";
   commit(action, { x: getters.size.y, y: getters.size.x });
 }
+
+/**
+ * Expand to stage size.
+ * @param {ctx}
+ * @param {Number} payload.x
+ * @param {Number} payload.y
+ */
+export function expand({ dispatch, state }, { x = 0, y = 0 }) {
+  dispatch("setCustomSize", {
+    x: state.stageX * x,
+    y: state.stageY * y
+  });
+}

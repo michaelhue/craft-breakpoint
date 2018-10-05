@@ -5,7 +5,11 @@
     :data-axis="axisName"
     role="presentation"
     class="bp-draggable"
-  />
+    @dblclick.prevent="expand({ x: 1, y: 1})"
+  >
+    <div class="handle-x" @dblclick.stop="expand({ x: 1 })" />
+    <div class="handle-y" @dblclick.stop="expand({ y: 1})" />
+  </div>
 </template>
 
 <script>
@@ -63,7 +67,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["modifySize", "setDragging"]),
+    ...mapActions(["modifySize", "setDragging", "expand"]),
 
     updateMouse(drag) {
       const { mouseX, mouseY } = drag;
@@ -116,14 +120,14 @@ export default {
   background: rgba(0, 0, 0, 0.03) url(./img/resize.svg) no-repeat bottom right;
   border-radius: 0 2px 2px 2px;
 
-  &::before,
-  &::after {
+  & .handle-x,
+  & .handle-y {
     content: "";
     position: absolute;
     background-repeat: no-repeat;
     background-position: center;
   }
-  &::before {
+  & .handle-x {
     top: 0;
     right: 0;
     bottom: 20px;
@@ -132,7 +136,7 @@ export default {
     background-image: url(./img/resize-x.svg);
     border-radius: 0 2px 2px 0;
   }
-  &::after {
+  & .handle-y {
     bottom: 0;
     left: 0;
     right: 20px;
@@ -143,8 +147,8 @@ export default {
   }
 
   &[data-axis="both"],
-  &[data-axis="x"]::before,
-  &[data-axis="y"]::after {
+  &[data-axis="x"] .handle-x,
+  &[data-axis="y"] .handle-y {
     background-color: rgba(0, 0, 20, 0.06);
   }
 }
