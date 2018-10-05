@@ -1,7 +1,8 @@
 <template>
   <div
-    :class="{ enabled }"
-    class="breakpoint-editor">
+    :class="{ enabled, dragging }"
+    class="breakpoint-editor"
+    @dragstart.native="e => console.log('DRAGSTART', e)">
     <EditorToolbar v-if="enabled" />
     <EditorStage>
       <EditorDraggable v-if="enabled" />
@@ -34,9 +35,7 @@ export default {
     }
   },
 
-  computed: {
-    ...mapGetters(["enabled"])
-  }
+  computed: mapGetters(["enabled", "dragging"])
 };
 </script>
 
@@ -60,5 +59,9 @@ export default {
   bottom: 20px;
   transition-property: top, left, right, bottom;
   transition-duration: 0.1s;
+}
+
+.breakpoint-editor.dragging >>> .bp-viewport {
+  pointer-events: none;
 }
 </style>

@@ -2,17 +2,28 @@
   <div
     v-show="!hasPreset"
     :style="style"
-    class="bp-draggable" />
+    :data-axis="axis"
+    class="bp-draggable"
+    @dragstart.native="e => console.log('DRAGSTART', e)" />
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { BaseDrag } from "garnish";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "EditorDraggable",
 
+  data() {
+    return {
+      dragStartX: 0,
+      dragStartY: 0,
+      dragDirection: null
+    };
+  },
+
   computed: {
-    ...mapGetters(["screenSize", "hasPreset"]),
+    ...mapGetters(["screenSize", "size", "hasPreset", "dragging"]),
 
     style() {
       return {
@@ -20,6 +31,71 @@ export default {
         height: this.screenSize.y + 20 + "px",
         marginLeft: this.screenSize.x / -2 + "px"
       };
+    },
+
+    axis() {
+      if (!this.dragging) return null;
+      return this.dragDirection || 'both';
+    }
+  },
+
+  mounted() {
+    this._dragger = new BaseDrag(this.$el, {
+      onDragStart: () => this.onDragStart(),
+      onDrag: () => this.onDrag(),
+      onDragStop: () => this.onDragEnd()
+    });
+  },
+
+  beforeDestroy() {
+    this._dragger.destroy();
+    delete this._dragger;
+  },
+
+  methods: {
+    ...mapActions(["setCustomSize", "setDragging"]),
+
+    onDragStart() {
+      this.dragStartX = this._dragger.mouseX;
+      this.dragStartY = this._dragger.mouseY;
+
+      const dragRect = this.$el.getBoundingClientRect();
+      const { realMouseX, realMouseY } = this._dragger;
+
+      const isOnX = dragRect.x + dragRect.width - 20 <= realMouseX;
+      const isOnY = dragRect.y + dragRect.height - 20 <= realMouseY;
+
+      if (isOnX && !isOnY) {
+        this.dragDirection = "x";
+      } else if (isOnY && !isOnX) {
+        this.dragDirection = "y";
+      } else {
+        this.dragDirection = null;
+      }
+
+      this.setDragging(true);
+    },
+
+    onDrag() {
+      const deltaX = this._dragger.mouseX - this.dragStartX;
+      const deltaY = this._dragger.mouseY - this.dragStartY;
+      let newSize = {};
+
+      if (this.dragDirection === null || this.dragDirection === "x") {
+        newSize.x = deltaX * 2 + this.size.x;
+      }
+      if (this.dragDirection === null || this.dragDirection === "y") {
+        newSize.y = deltaY + this.size.y;
+      }
+
+      this.setCustomSize(newSize);
+      this.dragStartX = this._dragger.mouseX;
+      this.dragStartY = this._dragger.mouseY;
+    },
+
+    onDragEnd() {
+      this.dragDirection = null;
+      this.setDragging(false);
     }
   }
 };

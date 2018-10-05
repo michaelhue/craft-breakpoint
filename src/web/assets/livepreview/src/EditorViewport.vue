@@ -1,7 +1,7 @@
 <template>
   <div
     :style="enabledStyle"
-    class="breakpoint-viewport" />
+    class="bp-viewport" />
 </template>
 
 <script>
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style scoped>
-.breakpoint-viewport {
+.bp-viewport {
   position: relative;
   z-index: 20;
   width: 100%;
@@ -53,8 +53,6 @@ export default {
   background: #fff;
   transform-origin: 50% 0;
   transform: scale(1);
-}
-.breakpoint-viewport {
   outline: 1px solid rgba(0, 0, 20, 0.2);
   box-shadow: 0 1px 16px rgba(0, 0, 20, 0.2);
 }

@@ -55,7 +55,9 @@ export function createStore(initial = {}) {
 
       fitZoom: (_, getters) => percent(getters.fitScale),
 
-      scale: (_, getters) => getters.zoom || getters.fitScale
+      scale: (_, getters) => getters.zoom || getters.fitScale,
+
+      dragging: state => state.dragging
     },
 
     actions: {
@@ -92,6 +94,10 @@ export function createStore(initial = {}) {
       rotate({ commit, getters }) {
         const action = getters.hasPreset ? "setPresetSize" : "setCustomSize";
         commit(action, { x: getters.size.y, y: getters.size.x });
+      },
+
+      setDragging({ commit }, value) {
+        commit("setDragging", value);
       }
     },
 
@@ -121,6 +127,10 @@ export function createStore(initial = {}) {
       setStageSize(state, { x, y }) {
         state.stageX = x;
         state.stageY = y;
+      },
+
+      setDragging(state, value) {
+        state.dragging = !!value;
       }
     }
   });
