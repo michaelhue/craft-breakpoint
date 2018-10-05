@@ -46,6 +46,8 @@ export default function attachTo(livePreview, settings = {}) {
 
   // Live preview enter handler.
   livePreview.on("enter", () => {
+    if (editor) return;
+
     const { $editor, $iframe, $iframeContainer } = livePreview;
     const editorProps = { iframe: $iframe.get(0) };
 
