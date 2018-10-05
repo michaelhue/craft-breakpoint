@@ -30,6 +30,7 @@
   "extra": {
     "name": "Breakpoint",
     "handle": "breakpoint",
-    "hasSettings": true
+    "hasSettings": true,
+    "documentationUrl": "https://github.com/michaelhue/craft-breakpoint"
   }
 }
