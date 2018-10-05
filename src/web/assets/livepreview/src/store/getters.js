@@ -60,16 +60,19 @@ export const customSize = state => ({ x: state.x, y: state.y });
  * @return {Object}
  */
 export const screenSize = (_, getters) => ({
-  x: getters.size.x * getters.scale,
-  y: getters.size.y * getters.scale
+  x: Math.floor(getters.size.x * getters.scale),
+  y: Math.floor(getters.size.y * getters.scale)
 });
 
 /**
  * Get active dimensions.
  * @return {Object}
  */
-export const size = (_, getters) =>
-  getters.hasPreset ? getters.presetSize : getters.customSize;
+export const size = (state, getters) => {
+  if (getters.hasPreset) return getters.presetSize;
+  if (state.x || state.y) return getters.customSize;
+  return { x: state.stageX, y: state.stageY };
+};
 
 /**
  * Get selected zoom level.
