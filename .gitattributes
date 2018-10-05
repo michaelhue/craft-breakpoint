@@ -5,4 +5,5 @@ src/web/assets/livepreview/src/ export-ignore
 *.config.js export-ignore
 .editorconfig export-ignore
 .eslint* export-ignore
+.git* export-ignore
 package*.json export-ignore
