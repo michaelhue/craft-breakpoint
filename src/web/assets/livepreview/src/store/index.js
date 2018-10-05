@@ -43,9 +43,7 @@ export function createStore(initial = {}) {
           "selectedPreset",
           "selectedZoom",
           "presetX",
-          "presetY",
-          "x",
-          "y"
+          "presetY"
         ]
       })
     ]
