@@ -2,7 +2,8 @@
   <div
     :class="{ enabled, dragging }"
     class="breakpoint-editor"
-    @dragstart.native="e => console.log('DRAGSTART', e)">
+    @dragstart.native="e => console.log('DRAGSTART', e)"
+  >
     <EditorToolbar v-if="enabled" />
     <EditorStage>
       <EditorDraggable v-if="enabled" />

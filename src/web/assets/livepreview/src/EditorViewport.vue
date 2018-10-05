@@ -1,7 +1,8 @@
 <template>
   <div
     :style="enabledStyle"
-    class="bp-viewport" />
+    class="bp-viewport"
+  />
 </template>
 
 <script>

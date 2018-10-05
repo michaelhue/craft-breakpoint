@@ -1,18 +1,21 @@
 <template>
   <div
     class="breakpoint-toolbar"
-    role="toolbar">
+    role="toolbar"
+  >
     <ToolbarSelect
       :label="locale.presets"
       :options="presetOptions"
       :default-option="locale.responsive"
-      @change="setPreset" />
+      @change="setPreset"
+    />
 
     <ToolbarInput
       :label="locale.width"
       :value="size.x"
       :disabled="hasPreset"
-      @change="x => setCustomSize({ x })" />
+      @change="x => setCustomSize({ x })"
+    />
 
     <small role="presentation">×</small>
 
@@ -20,18 +23,21 @@
       :label="locale.height"
       :value="size.y"
       :disabled="hasPreset"
-      @change="y => setCustomSize({ y })" />
+      @change="y => setCustomSize({ y })"
+    />
 
     <ToolbarSelect
       :label="locale.zoom"
       :options="zoomOptions"
       :default-option="`${locale.fit} (${fitZoom})`"
-      @change="setZoom" />
+      @change="setZoom"
+    />
 
     <ToolbarButton
       :label="locale.rotate"
       :icon="iconRotate"
-      @click="rotate()" />
+      @click="rotate()"
+    />
   </div>
 </template>
 

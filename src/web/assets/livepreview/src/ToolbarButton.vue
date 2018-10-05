@@ -2,11 +2,13 @@
   <button
     :title="label"
     type="button"
-    @click="$emit('click')">
+    @click="$emit('click')"
+  >
     <img
       :src="icon"
       role="presentation"
-      class="icon">
+      class="icon"
+    >
   </button>
 </template>
 

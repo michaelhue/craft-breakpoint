@@ -4,10 +4,12 @@
     :title="label"
     class="breakpoint-button btn"
     type="button"
-    @click="toggle">
+    @click="toggle"
+  >
     <img
       src="./img/devices.svg"
-      alt="Devices icon">
+      alt="Devices icon"
+    >
   </button>
 </template>
 

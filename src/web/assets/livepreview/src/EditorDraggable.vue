@@ -4,7 +4,8 @@
     :style="style"
     :data-axis="axisName"
     role="presentation"
-    class="bp-draggable" />
+    class="bp-draggable"
+  />
 </template>
 
 <script>

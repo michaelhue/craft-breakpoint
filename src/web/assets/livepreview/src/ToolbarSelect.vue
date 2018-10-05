@@ -2,15 +2,18 @@
   <select
     :title="label"
     :disabled="disabled"
-    @change="onChange">
+    @change="onChange"
+  >
     <option :value="-1">{{ defaultOption }}</option>
     <option
       v-if="!disabled"
-      disabled>───</option>
+      disabled
+    >───</option>
     <option
       v-for="(opt, index) in options"
+      :key="opt"
       :value="index"
-      :key="opt">{{ opt }}</option>
+    >{{ opt }}</option>
   </select>
 </template>
 
