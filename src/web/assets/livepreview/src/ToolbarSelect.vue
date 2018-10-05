@@ -1,8 +1,8 @@
 <template>
   <select
+    v-model.number="model"
     :title="label"
     :disabled="disabled"
-    v-model.number="model"
   >
     <option :value="-1">{{ defaultOption }}</option>
     <option
@@ -42,10 +42,10 @@ export default {
 
   computed: {
     model: {
-      get () {
+      get() {
         return this.value;
       },
-      set (x) {
+      set(x) {
         this.$emit("change", x);
       }
     },
