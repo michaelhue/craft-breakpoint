@@ -2,6 +2,7 @@ import { Store } from "vuex";
 import * as actions from "./actions";
 import * as getters from "./getters";
 import * as mutations from "./mutations";
+import createStoragePlugin from "./storage";
 
 /**
  * Default state.
@@ -32,6 +33,20 @@ export function createStore(initial = {}) {
     state: { ...state, ...initial },
     actions,
     getters,
-    mutations
+    mutations,
+
+    plugins: [
+      createStoragePlugin({
+        key: "BreakpointLivePreview",
+        paths: [
+          "selectedPreset",
+          "selectedZoom",
+          "presetX",
+          "presetY",
+          "x",
+          "y"
+        ]
+      })
+    ]
   });
 }
