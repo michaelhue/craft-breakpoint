@@ -7,6 +7,7 @@
       :label="locale.presets"
       :options="presetOptions"
       :default-option="locale.responsive"
+      :value="selectedPreset"
       @change="setPreset"
     />
 
@@ -30,6 +31,7 @@
       :label="locale.zoom"
       :options="zoomOptions"
       :default-option="`${locale.fit} (${fitZoom})`"
+      :value="selectedZoom"
       @change="setZoom"
     />
 
@@ -68,6 +70,8 @@ export default {
   computed: mapGetters([
     "presetOptions",
     "zoomOptions",
+    "selectedPreset",
+    "selectedZoom",
     "size",
     "hasPreset",
     "fitScale",

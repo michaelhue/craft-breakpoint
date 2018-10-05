@@ -2,7 +2,7 @@
   <select
     :title="label"
     :disabled="disabled"
-    @change="onChange"
+    v-model.number="model"
   >
     <option :value="-1">{{ defaultOption }}</option>
     <option
@@ -41,14 +41,17 @@ export default {
   },
 
   computed: {
+    model: {
+      get () {
+        return this.value;
+      },
+      set (x) {
+        this.$emit("change", x);
+      }
+    },
+
     disabled() {
       return this.options.length === 0;
-    }
-  },
-
-  methods: {
-    onChange(e) {
-      this.$emit("change", parseInt(e.target.value));
     }
   }
 };

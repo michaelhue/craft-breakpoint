@@ -32,6 +32,18 @@ export const zoomOptions = state =>
 export const hasPreset = state => state.selectedPreset > -1;
 
 /**
+ * Get selected preset index.
+ * @return {Number}
+ */
+export const selectedPreset = state => state.selectedPreset;
+
+/**
+ * Get selected zoom index.
+ * @return {Number}
+ */
+export const selectedZoom = state => state.selectedZoom;
+
+/**
  * Get preset dimensions.
  * @return {Object}
  */
