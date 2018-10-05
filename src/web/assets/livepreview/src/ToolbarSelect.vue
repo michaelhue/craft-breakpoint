@@ -3,6 +3,8 @@
     v-model.number="model"
     :title="label"
     :disabled="disabled"
+    @keydown.left.prevent="step(-1)"
+    @keydown.right.prevent="step(+1)"
   >
     <option :value="-1">{{ defaultOption }}</option>
     <option
@@ -18,6 +20,8 @@
 </template>
 
 <script>
+import { clamp } from "./util";
+
 export default {
   name: "ToolbarSelect",
 
@@ -52,6 +56,14 @@ export default {
 
     disabled() {
       return this.options.length === 0;
+    }
+  },
+
+  methods: {
+    step(offset = 0) {
+      const range = clamp(-1)(this.options.length - 1);
+      const x = range(this.value + offset);
+      this.$emit("change", x);
     }
   }
 };
