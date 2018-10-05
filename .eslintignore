@@ -1,0 +1,4 @@
+node_modules
+resources
+vendor
+src/web/assets/*/dist

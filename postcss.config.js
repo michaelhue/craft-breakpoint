@@ -11,7 +11,6 @@ module.exports = {
         "custom-properties": { preserve: false },
         "nesting-rules": true
       }
-    }),
-    require("cssnano")()
+    })
   ]
 };
