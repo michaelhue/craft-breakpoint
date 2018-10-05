@@ -69,7 +69,7 @@ export const screenSize = (_, getters) => ({
  * @return {Object}
  */
 export const size = (_, getters) =>
-  getters.hasPreset ? { ...getters.presetSize } : { ...getters.customSize };
+  getters.hasPreset ? getters.presetSize : getters.customSize;
 
 /**
  * Get selected zoom level.
