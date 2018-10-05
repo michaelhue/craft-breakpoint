@@ -4,6 +4,7 @@
     role="toolbar"
   >
     <ToolbarSelect
+      class="presets"
       :label="locale.presets"
       :options="presetOptions"
       :default-option="locale.responsive"
@@ -12,6 +13,7 @@
     />
 
     <ToolbarInput
+      class="x"
       :label="locale.width"
       :value="size.x"
       :disabled="hasPreset"
@@ -21,6 +23,7 @@
     <small role="presentation">×</small>
 
     <ToolbarInput
+      class="y"
       :label="locale.height"
       :value="size.y"
       :disabled="hasPreset"
@@ -28,6 +31,7 @@
     />
 
     <ToolbarSelect
+      class="zoom"
       :label="locale.zoom"
       :options="zoomOptions"
       :default-option="`${locale.fit} (${fitZoom})`"
@@ -36,6 +40,7 @@
     />
 
     <ToolbarButton
+      class="rotate"
       :label="locale.rotate"
       :icon="iconRotate"
       @click="rotate()"
@@ -153,6 +158,13 @@ export default {
   /* ie fix */
   & select::-ms-expand {
     display: none;
+  }
+
+  & select.presets {
+    max-width: 8em;
+  }
+  & select.zoom {
+    min-width: 6.8em;
   }
 }
 </style>
