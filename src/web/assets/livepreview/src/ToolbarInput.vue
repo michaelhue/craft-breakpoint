@@ -7,7 +7,7 @@
     :disabled="disabled"
     type="text"
     pattern="[0-9]+"
-    @focus="e => e.target.focus()"
+    @focus="e => e.target.select()"
     @change="change()"
     @keydown.up.prevent="change(+1, $event.shiftKey)"
     @keydown.down.prevent="change(-1, $event.shiftKey)"
