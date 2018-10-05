@@ -3,6 +3,10 @@ import { createStore } from "./store";
 import BreakpointButton from "./BreakpointButton";
 import BreakpointEditor from "./BreakpointEditor";
 
+if (process.env.NODE_ENV === "development") {
+  Vue.config.devtools = true;
+}
+
 /**
  * Create button vnode.
  * @param {Object} store
