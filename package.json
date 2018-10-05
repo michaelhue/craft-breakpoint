@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "webpack-cli --env.development --watch",
     "release": "webpack-cli --env.production  --hide-modules",
-    "eslint": "eslint"
+    "lint": "eslint --ext .js,.vue .",
+    "fix": "npm run lint -- --fix"
   },
   "dependencies": {},
   "devDependencies": {
