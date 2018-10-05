@@ -2,9 +2,10 @@
   "private": true,
   "scripts": {
     "dev": "webpack-cli --env.development --watch",
-    "release": "webpack-cli --env.production  --hide-modules",
+    "build": "webpack-cli --env.production --hide-modules",
     "lint": "eslint --ext .js,.vue .",
-    "fix": "npm run lint -- --fix"
+    "fix": "npm run lint -- --fix",
+    "release": "npm run lint && npm run build"
   },
   "dependencies": {},
   "devDependencies": {
