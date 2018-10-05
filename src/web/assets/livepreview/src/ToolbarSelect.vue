@@ -48,7 +48,7 @@ export default {
 
   methods: {
     onChange(e) {
-      this.$emit("change", e.target.value);
+      this.$emit("change", parseInt(e.target.value));
     }
   }
 };
