@@ -83,6 +83,13 @@ export function createStore(initial = {}) {
         });
       },
 
+      modifySize({ dispatch, state }, { x, y }) {
+        return dispatch("setCustomSize", {
+          x: state.x + x,
+          y: state.y + y
+        });
+      },
+
       updateStageSize({ commit, state }, size) {
         commit("setStageSize", size);
 

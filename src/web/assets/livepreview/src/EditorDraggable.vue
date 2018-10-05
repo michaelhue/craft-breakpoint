@@ -2,23 +2,30 @@
   <div
     v-show="!hasPreset"
     :style="style"
-    :data-axis="axis"
-    class="bp-draggable"
-    @dragstart.native="e => console.log('DRAGSTART', e)" />
+    :data-axis="axisName"
+    role="presentation"
+    class="bp-draggable" />
 </template>
 
 <script>
-import { BaseDrag } from "garnish";
+import Garnish from "garnish";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "EditorDraggable",
 
+  props: {
+    handle: {
+      type: Number,
+      default: 20
+    }
+  },
+
   data() {
     return {
-      dragStartX: 0,
-      dragStartY: 0,
-      dragDirection: null
+      mouseX: 0,
+      mouseY: 0,
+      axis: { x: false, y: false }
     };
   },
 
@@ -27,74 +34,68 @@ export default {
 
     style() {
       return {
-        width: this.screenSize.x + 20 + "px",
-        height: this.screenSize.y + 20 + "px",
+        width: this.screenSize.x + this.handle + "px",
+        height: this.screenSize.y + this.handle + "px",
         marginLeft: this.screenSize.x / -2 + "px"
       };
     },
 
-    axis() {
-      if (!this.dragging) return null;
-      return this.dragDirection || 'both';
+    axisName() {
+      const { x, y } = this.axis;
+      if (!x && !y) return "none";
+      else if (x && y) return "both";
+      else return x ? "x" : "y";
     }
   },
 
   mounted() {
-    this._dragger = new BaseDrag(this.$el, {
-      onDragStart: () => this.onDragStart(),
-      onDrag: () => this.onDrag(),
-      onDragStop: () => this.onDragEnd()
+    this.$drag = new Garnish.BaseDrag(this.$el, {
+      onDragStart: () => this.startDrag(this.$drag),
+      onDrag: () => this.updateDrag(this.$drag),
+      onDragStop: () => this.endDrag(this.$drag)
     });
   },
 
   beforeDestroy() {
-    this._dragger.destroy();
-    delete this._dragger;
+    this.$drag.destroy();
+    delete this.$drag;
   },
 
   methods: {
-    ...mapActions(["setCustomSize", "setDragging"]),
+    ...mapActions(["modifySize", "setDragging"]),
 
-    onDragStart() {
-      this.dragStartX = this._dragger.mouseX;
-      this.dragStartY = this._dragger.mouseY;
+    updateMouse(drag) {
+      const { mouseX, mouseY } = drag;
+      const deltaX = mouseX - this.mouseX;
+      const deltaY = mouseY - this.mouseY;
+      this.mouseX = mouseX;
+      this.mouseY = mouseY;
 
-      const dragRect = this.$el.getBoundingClientRect();
-      const { realMouseX, realMouseY } = this._dragger;
+      return { mouseX, mouseY, deltaX, deltaY };
+    },
 
-      const isOnX = dragRect.x + dragRect.width - 20 <= realMouseX;
-      const isOnY = dragRect.y + dragRect.height - 20 <= realMouseY;
+    updateAxis(mouseX, mouseY) {
+      const rect = this.$el.getBoundingClientRect();
+      this.axis.x = rect.x + rect.width - this.handle <= mouseX;
+      this.axis.y = rect.y + rect.height - this.handle <= mouseY;
+    },
 
-      if (isOnX && !isOnY) {
-        this.dragDirection = "x";
-      } else if (isOnY && !isOnX) {
-        this.dragDirection = "y";
-      } else {
-        this.dragDirection = null;
-      }
-
+    startDrag(drag) {
+      const { mouseX, mouseY } = this.updateMouse(drag);
+      this.updateAxis(mouseX, mouseY);
       this.setDragging(true);
     },
 
-    onDrag() {
-      const deltaX = this._dragger.mouseX - this.dragStartX;
-      const deltaY = this._dragger.mouseY - this.dragStartY;
-      let newSize = {};
-
-      if (this.dragDirection === null || this.dragDirection === "x") {
-        newSize.x = deltaX * 2 + this.size.x;
-      }
-      if (this.dragDirection === null || this.dragDirection === "y") {
-        newSize.y = deltaY + this.size.y;
-      }
-
-      this.setCustomSize(newSize);
-      this.dragStartX = this._dragger.mouseX;
-      this.dragStartY = this._dragger.mouseY;
+    updateDrag(drag) {
+      const { deltaX, deltaY } = this.updateMouse(drag);
+      this.modifySize({
+        x: this.axis.x ? deltaX * 2 : 0,
+        y: this.axis.y ? deltaY : 0
+      });
     },
 
-    onDragEnd() {
-      this.dragDirection = null;
+    endDrag() {
+      this.axis.x = this.axis.y = false;
       this.setDragging(false);
     }
   }
