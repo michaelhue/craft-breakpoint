@@ -2,7 +2,8 @@ const MiniCssExtract = require("mini-css-extract-plugin");
 const VueLoader = require("vue-loader/lib/plugin");
 const resolve = p => require("path").resolve("src/web/assets", p);
 
-module.exports = {
+module.exports = env => ({
+  mode: env.production ? "production" : "development",
   entry: {
     "live-preview": resolve("livepreview/src/main.js")
   },
@@ -50,4 +51,4 @@ module.exports = {
     }),
     new VueLoader()
   ]
-};
+});

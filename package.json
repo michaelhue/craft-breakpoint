@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "webpack-cli --mode=development --watch",
-    "release": "webpack-cli --mode=production --optimize-minimize --hide-modules",
+    "dev": "webpack-cli --env.development --watch",
+    "release":
+      "webpack-cli --env.production --optimize-minimize --hide-modules",
     "eslint": "eslint"
   },
   "dependencies": {},
