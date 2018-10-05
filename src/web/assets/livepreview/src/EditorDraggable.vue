@@ -89,6 +89,7 @@ export default {
 
     updateDrag(drag) {
       const { deltaX, deltaY } = this.updateMouse(drag);
+      if (deltaX === 0 && deltaY === 0) return;
       this.modifySize({
         x: this.axis.x ? deltaX * 2 : 0,
         y: this.axis.y ? deltaY : 0
