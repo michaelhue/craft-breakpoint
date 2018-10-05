@@ -43,11 +43,12 @@ export function setZoom({ commit }, index = -1) {
  * @param {Number} payload.x
  * @param {Number} payload.y
  */
-export function setCustomSize({ commit, state }, { x, y }) {
+export function setCustomSize({ commit, state }, { x = 0, y = 0 }) {
+  if (x === state.x && y === state.y) return;
   const range = clamp(100)(9999);
   return commit("setCustomSize", {
-    x: range(x) || state.x,
-    y: range(y) || state.y
+    x: x ? range(x) : state.x,
+    y: y ? range(y) : state.y
   });
 }
 
@@ -57,10 +58,10 @@ export function setCustomSize({ commit, state }, { x, y }) {
  * @param {Number} payload.x
  * @param {Number} payload.y
  */
-export function modifySize({ dispatch, state }, { x, y }) {
+export function modifySize({ dispatch, getters }, { x = 0, y = 0 }) {
   return dispatch("setCustomSize", {
-    x: state.x + x,
-    y: state.y + y
+    x: getters.size.x + x,
+    y: getters.size.y + y
   });
 }
 
@@ -71,11 +72,8 @@ export function modifySize({ dispatch, state }, { x, y }) {
  * @param {Number} payload.y
  */
 export function updateStageSize({ commit, state }, { x, y }) {
+  if (x === state.stageX && y === state.stageY) return;
   commit("setStageSize", { x, y });
-
-  if (state.x === 0 && state.y === 0) {
-    commit("setCustomSize", { x, y });
-  }
 }
 
 /**
