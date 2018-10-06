@@ -2,7 +2,6 @@
   <div
     :class="{ enabled, dragging }"
     class="bp-editor"
-    @dragstart.native="e => console.log('DRAGSTART', e)"
   >
     <BreakpointButton />
 
