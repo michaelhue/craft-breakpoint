@@ -9,14 +9,14 @@ module.exports = env => ({
   target: "web",
   devtool: "source-map",
   entry: {
-    "live-preview": resolve("livepreview/src/main.js")
+    livepreview: resolve("livepreview/src/main.js")
   },
   resolve: {
     extensions: [".vue", ".js", ".css"]
   },
   output: {
-    path: resolve("livepreview/dist"),
-    filename: "[name].js",
+    path: resolve("."),
+    filename: "[name]/dist/[name].js",
     library: "BreakpointLivePreview",
     libraryExport: "default",
     libraryTarget: "var"
@@ -61,7 +61,7 @@ module.exports = env => ({
   },
   plugins: [
     new MiniCssExtract({
-      filename: "[name].css"
+      filename: "[name]/dist/[name].css"
     }),
     new VueLoader({
       preserveWhitespace: false
