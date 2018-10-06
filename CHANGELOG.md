@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 - 2018-10-06
+
+### Fixed
+
+-   Fixed changelog for release.
+
 ## 1.1.0 - 2018-10-06
 
 ### Added
