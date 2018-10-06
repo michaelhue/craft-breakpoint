@@ -103,7 +103,7 @@ export default {
   height: 38px;
   z-index: 20;
 
-  & >>> * {
+  & > * {
     margin: 0 7px;
   }
 
