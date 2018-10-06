@@ -1,3 +1,5 @@
+![Icon](src/icon.svg)
+
 # Breakpoint for Craft CMS 3
 
 > Preview and test your responsive layouts on various screen sizes in Crafts Live Preview.
@@ -6,11 +8,11 @@
 
 ## Features
 
-*   Extends Crafts Live Preview while preserving its original function.
-*   Can be enabled or disabled at any time with the click of a button.
-*   Customize your own screen presets or choose from a list of popular devices.
-*   Automatic zoom keeps the whole preview visible even when testing large screen sizes.
-*   Simple, user-friendly settings page. ([Screenshot](resources/settings.png))
+-   Extends Crafts Live Preview while preserving its original function.
+-   Can be enabled or disabled at any time with the click of a button.
+-   Customize your own screen presets or choose from a list of popular devices.
+-   Automatic zoom keeps the whole preview visible even when testing large screen sizes.
+-   Simple, user-friendly settings page. ([Screenshot](resources/settings.png))
 
 ## Installation
 
@@ -32,8 +34,8 @@ Open the Control Panel and navigate to **Settings → Plugins** and install the 
 
 ## Requirements
 
-*   [Craft CMS](https://github.com/craftcms/cms/) `3.0.0` or later.
-*   A modern browser [supported by Craft](https://docs.craftcms.com/v3/requirements.html#cp-browser-requirements).
+-   [Craft CMS](https://github.com/craftcms/cms/) `3.0.0` or later.
+-   A modern browser [supported by Craft](https://docs.craftcms.com/v3/requirements.html#cp-browser-requirements).
 
 ## Licensing
 
@@ -58,10 +60,10 @@ If you prefer using a configuration file, copy the [`config.php`](src/config.php
 
 ## Caveats
 
-*   While the plugin functionality is similar to most browsers device preview, it does not emulate touch-events or user-agents.
-*   May not work with other plugins that extend or change the Live Preview.
+-   While the plugin functionality is similar to most browsers device preview, it does not emulate touch-events or user-agents.
+-   May not work with other plugins that extend or change the Live Preview.
 
 ## Support
 
-*   [Issues](https://github.com/michaelhue/craft-breakpoint/issues)
-*   [Changelog](CHANGELOG.md)
+-   [Issues](https://github.com/michaelhue/craft-breakpoint/issues)
+-   [Changelog](CHANGELOG.md)

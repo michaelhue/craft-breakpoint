@@ -1,7 +1,25 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+-   Added drag handles in responsive mode for resizing the viewport on-the-fly using your mouse.
+-   Double-click on drag handles to expand the viewport to full width and/or height.
+-   Step through preset and zoom level options using the `←` and `→` arrow keys when either field is in focus.
+-   Added missing link to plugin documentation.
+
+### Changed
+
+-   Custom viewport dimensions are no longer persistet and do reset when you open another Live Preview window.
+-   The viewport editor will stay enabled during your session until manually disabled.
+
+### Removed
+
+-   The viewport editor will no longer work in `IE 11` due to missing `Promise` support. This may change in the future if Craft decides to supply a polyfill for older browsers, [see issue](https://github.com/craftcms/cms/issues/3353).
+
 ## 1.0.0 - 2018-10-01
 
 ### Added
 
-*   Initial release.
+-   Initial release.
