@@ -37,7 +37,6 @@ export default function attachTo(livePreview, settings = {}) {
     const iframe = livePreview.$iframe.get(0);
 
     editor = createEditor(store, { iframe }).$mount();
-    console.log(editor);
     container.appendChild(editor.$el);
   });
 
