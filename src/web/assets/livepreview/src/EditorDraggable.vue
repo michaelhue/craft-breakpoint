@@ -7,12 +7,12 @@
     class="bp-draggable"
     @dblclick.prevent="expand({ x: 1, y: 1})"
   >
-    <div 
-      class="handle-x" 
+    <div
+      class="handle-x"
       @dblclick.stop="expand({ x: 1 })"
     />
-    <div 
-      class="handle-y" 
+    <div
+      class="handle-y"
       @dblclick.stop="expand({ y: 1})"
     />
   </div>
@@ -86,9 +86,9 @@ export default {
     },
 
     updateAxis(mouseX, mouseY) {
-      const rect = this.$el.getBoundingClientRect();
-      this.axis.x = rect.x + rect.width - this.handle <= mouseX;
-      this.axis.y = rect.y + rect.height - this.handle <= mouseY;
+      const { top, left, width, height } = this.$el.getBoundingClientRect();
+      this.axis.x = left + width - this.handle <= mouseX;
+      this.axis.y = top + height - this.handle <= mouseY;
     },
 
     startDrag(drag) {
@@ -99,6 +99,7 @@ export default {
 
     updateDrag(drag) {
       const { deltaX, deltaY } = this.updateMouse(drag);
+
       if (deltaX === 0 && deltaY === 0) return;
       this.modifySize({
         x: this.axis.x ? deltaX * 2 : 0,
