@@ -51,9 +51,4 @@ input {
   width: 42px;
   text-align: center;
 }
-
-input:not([disabled]):focus,
-input:not([disabled]):active {
-  background-color: #fff;
-}
 </style>

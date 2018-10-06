@@ -103,11 +103,11 @@ export default {
   height: 38px;
   z-index: 20;
 
-  & > * {
+  & >>> * {
     margin: 0 7px;
   }
 
-  & > small {
+  & >>> small {
     display: block;
     margin: 0 -4px;
     opacity: 0.6;
@@ -115,9 +115,9 @@ export default {
     font-size: 14px;
   }
 
-  & input,
-  & select,
-  & button {
+  & >>> input,
+  & >>> select,
+  & >>> button {
     display: block;
     padding: 3px;
     border: 1px solid transparent;
@@ -147,7 +147,7 @@ export default {
       outline: none;
     }
   }
-  & select {
+  & >>> select {
     appearance: none;
     padding-left: 4px;
     padding-right: 14px;
@@ -156,14 +156,14 @@ export default {
     background-position: calc(100% - 4px) center;
   }
   /* ie fix */
-  & select::-ms-expand {
+  & >>> select::-ms-expand {
     display: none;
   }
 
-  & select.presets {
+  & >>> select.presets {
     max-width: 8em;
   }
-  & select.zoom {
+  & >>> select.zoom {
     min-width: 6.8em;
   }
 }

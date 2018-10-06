@@ -34,7 +34,7 @@ button {
   padding: 3px;
 }
 
-.icon {
+button >>> .icon {
   display: block;
   width: 16px;
   height: 16px;

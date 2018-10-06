@@ -40,8 +40,8 @@ export default {
   padding: 7px;
 }
 
-.bp-button.active > *,
-.bp-button:active > * {
+.bp-button.active >>> *,
+.bp-button:active >>> * {
   opacity: 0.6;
 }
 </style>

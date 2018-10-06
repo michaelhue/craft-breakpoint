@@ -120,14 +120,14 @@ export default {
   background: rgba(0, 0, 0, 0.03) url(./img/resize.svg) no-repeat bottom right;
   border-radius: 0 2px 2px 2px;
 
-  & .handle-x,
-  & .handle-y {
+  & >>> .handle-x,
+  & >>> .handle-y {
     content: "";
     position: absolute;
     background-repeat: no-repeat;
     background-position: center;
   }
-  & .handle-x {
+  & >>> .handle-x {
     top: 0;
     right: 0;
     bottom: 20px;
@@ -136,7 +136,7 @@ export default {
     background-image: url(./img/resize-x.svg);
     border-radius: 0 2px 2px 0;
   }
-  & .handle-y {
+  & >>> .handle-y {
     bottom: 0;
     left: 0;
     right: 20px;
@@ -147,8 +147,8 @@ export default {
   }
 
   &[data-axis="both"],
-  &[data-axis="x"] .handle-x,
-  &[data-axis="y"] .handle-y {
+  &[data-axis="x"] >>> .handle-x,
+  &[data-axis="y"] >>> .handle-y {
     background-color: rgba(0, 0, 20, 0.06);
   }
 }
