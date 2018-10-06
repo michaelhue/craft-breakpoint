@@ -14,6 +14,10 @@
 -   Custom viewport dimensions are no longer persistet and do reset when you open another Live Preview window.
 -   The viewport editor will stay enabled during your session until manually disabled.
 
+### Removed
+
+-   The viewport editor will no longer work in `IE 11` due to missing `Promise` support. This may change in the future if Craft decides to supply a polyfill for older browsers, [see issue](https://github.com/craftcms/cms/issues/3353).
+
 ## 1.0.0 - 2018-10-01
 
 ### Added
