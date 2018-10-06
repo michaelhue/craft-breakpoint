@@ -4,13 +4,15 @@
 
 ### Added
 
--   Drag to resize viewport in responsive mode.
--   Step through presets and zoom levels using the ← and → arrow keys while either field is in focus.
--   Link to plugin documentation.
+-   Added drag handles in responsive mode for resizing the viewport on-the-fly using your mouse.
+-   Double-click on drag handles to expand the viewport to full width and/or height.
+-   Step through preset and zoom level options using the `←` and `→` arrow keys when either field is in focus.
+-   Added missing link to plugin documentation.
 
 ### Changed
 
--   Remember if the device preview is enabled or disabled during a session.
+-   Custom viewport dimensions are no longer persistet and do reset when you open another Live Preview window.
+-   The viewport editor will stay enabled during your session until manually disabled.
 
 ## 1.0.0 - 2018-10-01
 
