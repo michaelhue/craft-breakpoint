@@ -22,11 +22,18 @@ export default {
 
   data() {
     return {
-      label: locale.toggle
+      label: locale.toggle,
+      insertBefore: ".lp-editor > .header > .btn.submit"
     };
   },
 
   computed: mapGetters(["enabled"]),
+
+  mounted() {
+    // Move the element outside.
+    const target = document.querySelector(this.insertBefore);
+    target.parentNode.insertBefore(this.$el, target);
+  },
 
   methods: mapActions(["toggle"])
 };

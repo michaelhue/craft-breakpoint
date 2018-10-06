@@ -4,7 +4,10 @@
     class="bp-editor"
     @dragstart.native="e => console.log('DRAGSTART', e)"
   >
+    <BreakpointButton />
+
     <EditorToolbar v-if="enabled" />
+
     <EditorStage>
       <EditorDraggable v-if="enabled" />
       <EditorViewport :iframe="iframe" />
@@ -14,6 +17,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import BreakpointButton from "./BreakpointButton";
 import EditorDraggable from "./EditorDraggable";
 import EditorToolbar from "./EditorToolbar";
 import EditorStage from "./EditorStage";
@@ -23,6 +27,7 @@ export default {
   name: "BreakpointEditor",
 
   components: {
+    BreakpointButton,
     EditorDraggable,
     EditorStage,
     EditorToolbar,

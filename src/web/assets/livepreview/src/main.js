@@ -1,22 +1,9 @@
 import Vue from "vue";
 import { createStore } from "./store";
-import BreakpointButton from "./BreakpointButton";
 import BreakpointEditor from "./BreakpointEditor";
 
 if (process.env.NODE_ENV === "development") {
   Vue.config.devtools = true;
-}
-
-/**
- * Create button vnode.
- * @param {Object} store
- * @return {Vue}
- */
-function createButton(store, props = {}) {
-  return new Vue({
-    store,
-    render: h => h(BreakpointButton, { props })
-  });
 }
 
 /**
@@ -25,7 +12,7 @@ function createButton(store, props = {}) {
  * @param {Object} props
  * @return {Vue}
  */
-function createEditor(store, props = {}) {
+function createEditor(store, props) {
   return new Vue({
     store,
     render: h => h(BreakpointEditor, { props })
@@ -36,31 +23,23 @@ function createEditor(store, props = {}) {
  * Attach editor to Live Preview instance.
  * @param {Craft.LivePreview}
  * @param {Object} settings
- * @return {Vuex.Store}
+ * @return {Vue}
  */
 export default function attachTo(livePreview, settings = {}) {
-  let button;
   let editor;
-
-  const store = createStore(settings);
 
   // Live preview enter handler.
   livePreview.on("enter", () => {
     if (editor) return;
 
-    const { $editor, $iframe, $iframeContainer } = livePreview;
-    const editorProps = { iframe: $iframe.get(0) };
+    const store = createStore(settings);
+    const container = livePreview.$iframeContainer.get(0);
+    const iframe = livePreview.$iframe.get(0);
 
-    // Mount our components.
-    editor = createEditor(store, editorProps).$mount();
-    button = createButton(store).$mount();
-
-    // Append button to target header.
-    $editor.find("header > .btn:first-child").after(button.$el);
-
-    // Insert editor into iframe container.
-    $iframeContainer.append(editor.$el);
+    editor = createEditor(store, { iframe }).$mount();
+    console.log(editor);
+    container.appendChild(editor.$el);
   });
 
-  return store;
+  return editor;
 }
