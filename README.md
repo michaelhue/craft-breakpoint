@@ -12,7 +12,7 @@
 -   Can be enabled or disabled at any time with the click of a button.
 -   Customize your own screen presets or choose from a list of popular devices.
 -   Automatic zoom keeps the whole preview visible even when testing large screen sizes.
--   Detailed [User Manual](docs/README.md) with screenshots.
+-   Detailed [User Manual](https://github.com/michaelhue/craft-breakpoint/tree/master/docs) with screenshots.
 
 ## Installation
 
@@ -39,7 +39,7 @@ Open the Control Panel and navigate to **Settings → Plugins** and install the 
 
 ## Usage
 
-See [User Manual](docs/README.md).
+See [User Manual](https://github.com/michaelhue/craft-breakpoint/tree/master/docs).
 
 ## Licensing
 
