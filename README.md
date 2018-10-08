@@ -2,17 +2,17 @@
 
 # Breakpoint for Craft CMS 3
 
-> Preview and test your responsive layouts on various screen sizes in Crafts Live Preview.
+> Preview and test your responsive layouts on various screen sizes in Craft's Live Preview.
 
-![Preview](resources/preview.png)
+![Preview](docs/resources/preview.png)
 
 ## Features
 
--   Extends Crafts Live Preview while preserving its original function.
+-   Extends Craft's Live Preview while preserving its original function.
 -   Can be enabled or disabled at any time with the click of a button.
 -   Customize your own screen presets or choose from a list of popular devices.
 -   Automatic zoom keeps the whole preview visible even when testing large screen sizes.
--   Simple, user-friendly settings page. ([Screenshot](resources/settings.png))
+-   Simple, user-friendly settings page. ([Screenshot](docs/resources/settings.png))
 
 ## Installation
 
@@ -45,7 +45,7 @@ The license fee for this plugin is $29 (license + one year of updates) via the C
 
 ### Live Preview
 
-The plugin automatically extends Crafts Live Preview when enabled.
+The plugin automatically extends Craft's Live Preview when enabled.
 
 1.  Go to the **Entries** page in the Control Panel and click on an entry to open the edit page.
 2.  Open Live Preview and click on the device button (![Button](src/web/assets/livepreview/src/img/devices.svg)) in the top left area of the window.
