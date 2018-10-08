@@ -77,7 +77,7 @@ _**Figure 7.** The Device presets list._
 
 -   You can add dividers by setting the title to `---` (three dashes).
 -   It’s possible to set width or height to `0`, which means `100%`.
--   If you prefer using a configuration file, copy [`config.php`](`../src/config.php) to `config/breakpoint.php` and edit the file contents.
+-   If you prefer using a configuration file, copy [`config.php`](../src/config.php) to `config/breakpoint.php` and edit the file contents.
 
 ## Resources
 
