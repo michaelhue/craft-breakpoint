@@ -12,7 +12,6 @@
 -   Can be enabled or disabled at any time with the click of a button.
 -   Customize your own screen presets or choose from a list of popular devices.
 -   Automatic zoom keeps the whole preview visible even when testing large screen sizes.
--   Simple, user-friendly settings page. ([Screenshot](docs/resources/settings.png))
 -   Detailed [User Manual](docs/README.md) with screenshots.
 
 ## Installation
