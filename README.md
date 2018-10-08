@@ -13,6 +13,7 @@
 -   Customize your own screen presets or choose from a list of popular devices.
 -   Automatic zoom keeps the whole preview visible even when testing large screen sizes.
 -   Simple, user-friendly settings page. ([Screenshot](docs/resources/settings.png))
+-   Detailed [User Manual](docs/README.md) with screenshots.
 
 ## Installation
 
@@ -37,26 +38,13 @@ Open the Control Panel and navigate to **Settings → Plugins** and install the 
 -   [Craft CMS](https://github.com/craftcms/cms/) `3.0.0` or later.
 -   A modern browser [supported by Craft](https://docs.craftcms.com/v3/requirements.html#cp-browser-requirements).
 
+## Usage
+
+See [User Manual](docs/README.md).
+
 ## Licensing
 
 The license fee for this plugin is $29 (license + one year of updates) via the Craft Plugin Store, then $9 per year for updates.
-
-## Usage
-
-### Live Preview
-
-The plugin automatically extends Craft's Live Preview when enabled.
-
-1.  Go to the **Entries** page in the Control Panel and click on an entry to open the edit page.
-2.  Open Live Preview and click on the device button (![Button](src/web/assets/livepreview/src/img/devices.svg)) in the top left area of the window.
-3.  Use the device toolbar to test your responsive design.
-4.  When your are done testing click the device button again to restore the default Live Preview.
-
-### Customization
-
-The plugin settings are available at **Settings → Breakpoint**.
-
-If you prefer using a configuration file, copy the [`config.php`](src/config.php) file to `config/breakpoint.php` inside your project and edit the contents.
 
 ## Caveats
 
@@ -65,5 +53,6 @@ If you prefer using a configuration file, copy the [`config.php`](src/config.php
 
 ## Support
 
--   [Issues](https://github.com/michaelhue/craft-breakpoint/issues)
--   [Changelog](CHANGELOG.md)
+-   [User Manual](docs/README.md) – Learn how to use the plugin.
+-   [Issues](https://github.com/michaelhue/craft-breakpoint/issues) – Submit bug reports, feature requests and general questions.
+-   [Changelog](https://github.com/michaelhue/craft-breakpoint/blob/master/CHANGELOG.md) – View recent changes and bug fixes.
