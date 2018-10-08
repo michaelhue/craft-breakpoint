@@ -15,7 +15,7 @@
   "support": {
     "issues": "https://github.com/michaelhue/craft-breakpoint/issues",
     "source": "https://github.com/michaelhue/craft-breakpoint",
-    "docs": "https://github.com/michaelhue/craft-breakpoint",
+    "docs": "https://github.com/michaelhue/craft-breakpoint/tree/master/docs",
     "rss": "https://github.com/michaelhue/craft-breakpoint/commits/master.atom"
   },
   "require": {
@@ -31,6 +31,7 @@
     "name": "Breakpoint",
     "handle": "breakpoint",
     "hasSettings": true,
-    "documentationUrl": "https://github.com/michaelhue/craft-breakpoint"
+    "documentationUrl":
+      "https://github.com/michaelhue/craft-breakpoint/tree/master/docs"
   }
 }
