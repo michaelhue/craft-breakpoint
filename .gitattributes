@@ -1,4 +1,4 @@
-resources/ export-ignore
+docs/ export-ignore
 src/web/assets/livepreview/src/ export-ignore
 .*rc export-ignore
 *rc.js export-ignore
