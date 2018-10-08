@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+-   Added a detailed [User Manual](https://github.com/michaelhue/craft-breakpoint/tree/master/docs).
+
 ## 1.1.1 - 2018-10-06
 
 ### Fixed
