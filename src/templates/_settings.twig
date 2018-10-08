@@ -10,8 +10,8 @@
 {{ forms.editableTableField({
   id: handle ~ '-presets',
   name: 'presets',
-  label: 'Screen sizes'|t('breakpoint'),
-  instructions: 'Manage screen size presets available in Live Preview.'|t('breakpoint'),
+  label: 'Viewport presets'|t('breakpoint'),
+  instructions: 'Manage viewport presets available in Live Preview.'|t('breakpoint'),
   addRowLabel: 'Add screen size'|t('breakpoint'),
   static: 'presets' in overrides|keys,
   warning: 'presets' in overrides|keys ? overridden('presets'),
