@@ -1,8 +1,11 @@
+const { BannerPlugin } = require("webpack");
 const MiniCssExtract = require("mini-css-extract-plugin");
 const OptimizeCSSAssets = require("optimize-css-assets-webpack-plugin");
 const UglifyJs = require("uglifyjs-webpack-plugin");
 const VueLoader = require("vue-loader/lib/plugin");
 const resolve = p => require("path").resolve("src/web/assets", p);
+const composer = require("./composer.json");
+const year = new Date().getUTCFullYear();
 
 module.exports = env => ({
   mode: env.production ? "production" : "development",
@@ -36,7 +39,11 @@ module.exports = env => ({
         parallel: true,
         sourceMap: true
       }),
-      new OptimizeCSSAssets()
+      new OptimizeCSSAssets({
+        cssProcessorOptions: {
+          map: { inline: false, annotation: true }
+        }
+      })
     ]
   },
   module: {
@@ -65,6 +72,11 @@ module.exports = env => ({
     }),
     new VueLoader({
       preserveWhitespace: false
-    })
+    }),
+    new BannerPlugin(
+      composer.name +
+        `\n(c) ${year} ${composer.authors[0].name}\n` +
+        composer.homepage
+    )
   ]
 });
