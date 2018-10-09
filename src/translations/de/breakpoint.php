@@ -20,7 +20,7 @@ return [
 	'Size' => 'Größe',
 	'Tablets' => 'Tablets',
 	'This is being overridden by the {setting} config setting in your {file} config file.' => 'Dies wird durch die {setting} Einstellung in der {file} Konfigurationsdatei aufgehoben.',
-	'Toggle screen sizes' => 'Bildschirmgrößen ein-/ausblenden',
+	'Toggle Viewport Editor' => 'Viewport Editor ein-/ausblenden',
 	'Viewport presets' => 'Viewport Voreinstellungen',
 	'Width' => 'Breite',
 	'Zoom' => 'Zoom',

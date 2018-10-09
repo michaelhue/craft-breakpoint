@@ -20,7 +20,7 @@ return [
 	'Size' => 'Size',
 	'Tablets' => 'Tablets',
 	'This is being overridden by the {setting} config setting in your {file} config file.' => 'This is being overridden by the {setting} config setting in your {file} config file.',
-	'Toggle screen sizes' => 'Toggle screen sizes',
+	'Toggle Viewport Editor' => 'Toggle Viewport Editor',
 	'Viewport presets' => 'Viewport presets',
 	'Width' => 'Width',
 	'Zoom' => 'Zoom',
