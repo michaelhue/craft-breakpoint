@@ -2,7 +2,7 @@
   "name": "michaelhue/craft-breakpoint",
   "type": "craft-plugin",
   "description":
-    "Preview and test your responsive layouts on various screen sizes in Crafts Live Preview.",
+    "Test your responsive layouts on various screen sizes in Live Preview.",
   "keywords": ["craftcms", "craft-plugin", "live-preview"],
   "license": "proprietary",
   "homepage": "https://github.com/michaelhue/craft-breakpoint",
