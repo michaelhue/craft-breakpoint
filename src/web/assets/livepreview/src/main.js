@@ -32,11 +32,22 @@ export default function attachTo(livePreview, settings = {}) {
   livePreview.on("enter", () => {
     if (editor) return;
 
+    // Initialize Vuex store.
     const store = createStore(settings);
+
+    // Create a dummy iframe for Craft to replace.
+    if (!livePreview.$iframe) {
+      livePreview.$iframe = $('<iframe class="lp-iframe">')
+        .appendTo(livePreview.$iframeContainer);
+    }
+
+    // Get livepreview elements.
     const container = livePreview.$iframeContainer.get(0);
     const iframe = livePreview.$iframe.get(0);
 
+    // Create our custom editor.
     editor = createEditor(store, { iframe }).$mount();
+
     container.appendChild(editor.$el);
   });
 
