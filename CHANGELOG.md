@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+-   Added support for Craft `3.1`.
+
 ## 1.1.2 - 2018-10-09
 
 ### Added
