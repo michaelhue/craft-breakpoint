@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="{ enabled, dragging }"
-    class="bp-editor"
-  >
+  <div :class="{ enabled, dragging }" class="bp-editor">
     <BreakpointButton />
 
     <EditorToolbar v-if="enabled" />
