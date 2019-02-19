@@ -26,7 +26,7 @@
 
 ## Installation
 
-Install this plugin from the Plugin Store or with Composer.
+Install this plugin from the [Plugin Store](https://plugins.craftcms.com/breakpoint) or with [Composer](https://packagist.org/packages/michaelhue/craft-breakpoint).
 
 ### Plugin Store
 
@@ -53,7 +53,7 @@ See [User Manual].
 
 ## Licensing
 
-The license fee for this plugin is $29 (license + one year of updates) via the Craft Plugin Store, then $9 per year for updates.
+The license fee for this plugin is $29 (license + one year of updates) via the Craft Plugin Store, then$9 per year for updates.
 
 ## Limitations
 
