@@ -2,7 +2,7 @@
 
 # Breakpoint for Craft CMS 3
 
-**Test your responsive layouts on various screen sizes in Live Preview.**
+**A Craft 3 plugin for testing responsive layouts in Live Preview.**
 
 ![Preview]
 
@@ -18,9 +18,9 @@
 
 ## Features
 
--   Extends Craft's Live Preview while preserving its original function.
--   Can be enabled or disabled at any time with the click of a button.
--   Customize your own screen presets or choose from a list of popular devices.
+-   A useful tool for testing your site's responsive layout directly in Live Preview.
+-   Can be enabled or disabled in Live Preview at any time.
+-   Customize your own device presets or choose from a list of popular devices.
 -   Automatic zoom keeps the whole preview visible even when testing large screen sizes.
 -   Detailed [User Manual] with screenshots.
 
@@ -57,7 +57,7 @@ The license fee for this plugin is $29 (license + one year of updates) via the C
 
 ## Limitations
 
--   While the plugin functionality is similar to most browsers device preview, it does not emulate touch-events or user-agents.
+-   While the plugin functionality is similar to device previews found in most browsers, it does not emulate touch events or user agents.
 -   May not work with other plugins that extend or change the Live Preview.
 
 ## Support
