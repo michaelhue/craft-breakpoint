@@ -54,4 +54,9 @@ export default {
   outline: 1px solid rgba(0, 0, 20, 0.2);
   box-shadow: 0 1px 16px rgba(0, 0, 20, 0.2);
 }
+
+.bp-viewport >>> iframe {
+  width: 100%;
+  height: 100%;
+}
 </style>

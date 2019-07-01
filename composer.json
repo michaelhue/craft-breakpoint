@@ -1,9 +1,12 @@
 {
   "name": "michaelhue/craft-breakpoint",
   "type": "craft-plugin",
-  "description":
-    "Test your responsive layouts on various screen sizes in Live Preview.",
-  "keywords": ["craftcms", "craft-plugin", "live-preview"],
+  "description": "Test your responsive layouts on various screen sizes in Live Preview.",
+  "keywords": [
+    "craftcms",
+    "craft-plugin",
+    "live-preview"
+  ],
   "license": "proprietary",
   "homepage": "https://github.com/michaelhue/craft-breakpoint",
   "authors": [
@@ -20,7 +23,7 @@
   },
   "require": {
     "php": ">=7.0.0",
-    "craftcms/cms": "^3.0.0"
+    "craftcms/cms": "^3.2.0"
   },
   "autoload": {
     "psr-4": {
@@ -31,7 +34,6 @@
     "name": "Breakpoint",
     "handle": "breakpoint",
     "hasSettings": true,
-    "documentationUrl":
-      "https://github.com/michaelhue/craft-breakpoint/tree/master/docs"
+    "documentationUrl": "https://github.com/michaelhue/craft-breakpoint/tree/master/docs"
   }
 }

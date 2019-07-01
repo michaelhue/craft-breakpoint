@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       label: locale.toggle,
-      insertBefore: ".lp-editor > .header > .btn.submit"
+      insertAfter: ".lp-editor-container > header > .btn"
     };
   },
 
@@ -31,8 +31,8 @@ export default {
 
   mounted() {
     // Move the element outside.
-    const target = document.querySelector(this.insertBefore);
-    target.parentNode.insertBefore(this.$el, target);
+    const target = document.querySelector(this.insertAfter);
+    target.after(this.$el);
   },
 
   methods: mapActions(["toggle"])
