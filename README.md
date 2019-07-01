@@ -53,7 +53,7 @@ See [User Manual].
 
 ## Licensing
 
-The license fee for this plugin is $29 (license + one year of updates) via the Craft Plugin Store, then$9 per year for updates.
+The license fee for this plugin is $29 (license + one year of updates) via the Craft Plugin Store, then $9 per year for updates.
 
 ## Limitations
 
