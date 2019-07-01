@@ -35,7 +35,6 @@
     "Chrome >= 29",
     "Firefox >= 28",
     "Safari >= 9",
-    "IE >= 11",
     "Edge >= 12",
     "not dead"
   ]
