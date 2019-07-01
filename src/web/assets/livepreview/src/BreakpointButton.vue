@@ -6,10 +6,7 @@
     type="button"
     @click="toggle"
   >
-    <img
-      src="./img/devices.svg"
-      alt="Devices icon"
-    >
+    <img src="./img/devices.svg" alt="Devices icon" />
   </button>
 </template>
 
@@ -45,8 +42,12 @@ export default {
   width: 32px;
   margin: 0 5px;
   padding: 7px;
+  cursor: pointer;
 }
 
+.bp-button.active {
+  border: 1px solid #0d99f2;
+}
 .bp-button.active >>> *,
 .bp-button:active >>> * {
   opacity: 0.6;
