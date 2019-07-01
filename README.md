@@ -67,7 +67,7 @@ The license fee for this plugin is $29 (license + one year of updates) via the C
 -   [Changelog] – View recent changes and bug fixes.
 
 [craft cms]: https://github.com/craftcms/cms/
-[browser requirements]: https://docs.craftcms.com/v3/requirements.html#cp-browser-requirements
+[browser requirements]: https://docs.craftcms.com/v3/requirements.html#control-panel-browser-requirements
 [user manual]: https://github.com/michaelhue/craft-breakpoint/tree/master/docs
 [issues]: https://github.com/michaelhue/craft-breakpoint/issues
 [changelog]: https://github.com/michaelhue/craft-breakpoint/blob/master/CHANGELOG.md
