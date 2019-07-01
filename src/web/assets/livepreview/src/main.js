@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === "development") {
  * Name of the property for attaching the plugin to Craft.Preview.
  * @type {String}
  */
-export const BREAKPOINT_PROP = '__breakpoint';
+export const BREAKPOINT_PROP = "__breakpoint";
 
 /**
  * Returns an object with method overloads for the Craft.Preview object.
@@ -35,7 +35,7 @@ function overloadPreview(settings) {
           this[BREAKPOINT_PROP] = editor;
         }
       } catch (err) {
-        console.info('[michaelhue/craft-breakpoint]', err);
+        console.info("[michaelhue/craft-breakpoint]", err);
       }
 
       // Resume normal operations
