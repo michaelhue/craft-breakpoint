@@ -75,7 +75,7 @@ module.exports = env => ({
     }),
     new BannerPlugin(
       composer.name +
-        `\n(c) ${year} ${composer.authors[0].name}\n` +
+        `\n(c) 2018-${year} ${composer.authors[0].name}\n` +
         composer.homepage
     )
   ]
