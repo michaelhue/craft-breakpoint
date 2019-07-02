@@ -35,6 +35,6 @@
     "Firefox >= 28",
     "Safari >= 9",
     "Edge >= 12",
-    "not dead"
+    "last 2 versions"
   ]
 }
