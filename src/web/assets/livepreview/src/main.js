@@ -3,6 +3,7 @@ import { createStore } from "./store";
 import BreakpointEditor from "./BreakpointEditor";
 
 if (process.env.NODE_ENV === "development") {
+  // Enable vue debugging in dev build.
   Vue.config.devtools = true;
 }
 
@@ -13,35 +14,24 @@ if (process.env.NODE_ENV === "development") {
 export const BREAKPOINT_PROP = "__breakpoint";
 
 /**
- * Returns an object with method overloads for the Craft.Preview object.
+ * Initialize the editor on a preview instance.
+ * @param {Craft.Preview} target
  * @param {Object} settings
- * @return {Object} An object with overloading functions.
+ * @return {void}
  */
-function overloadPreview(settings) {
-  return {
-    // We use Preview.afterUpdateIframe to create our custom editor since at
-    // this point all necessary elements are created and accessible.
-    // If an error occurs somewhere we will just bail out and log to console.
-    afterUpdateIframe(...args) {
-      try {
-        if (this[BREAKPOINT_PROP] === undefined) {
-          const container = this.$previewContainer.get(0);
-          const iframe = this.$iframe.get(0);
+function initEditor(target, settings) {
+  if (target[BREAKPOINT_PROP] !== undefined) {
+    return;
+  }
 
-          const store = createStore(settings);
-          const editor = createEditor(store, { iframe }).$mount();
+  const container = target.$previewContainer.get(0);
+  const iframe = target.$iframe.get(0);
 
-          container.appendChild(editor.$el);
-          this[BREAKPOINT_PROP] = editor;
-        }
-      } catch (err) {
-        console.info("[michaelhue/craft-breakpoint]", err);
-      }
+  const store = createStore(settings);
+  const editor = createEditor(store, { iframe }).$mount();
 
-      // Resume normal operations
-      return this.base(...args);
-    }
-  };
+  container.appendChild(editor.$el);
+  target[BREAKPOINT_PROP] = editor;
 }
 
 /**
@@ -55,6 +45,28 @@ function createEditor(store, props) {
     store,
     render: h => h(BreakpointEditor, { props })
   });
+}
+
+/**
+ * Returns an object with method overloads for the Craft.Preview object.
+ * @param {Object} settings
+ * @return {Object} An object with overloading functions.
+ */
+function overloadPreview(settings) {
+  return {
+    // We overload the 'afterUpdateIframe' function because this is the earliest
+    // point in the preview lifecycle where all necessary elements are created.
+    // If an error occurs somewhere we will just bail out and log to console.
+    afterUpdateIframe(...args) {
+      try {
+        initEditor(this, settings);
+      } catch (err) {
+        console.info("[michaelhue/craft-breakpoint]", err);
+      }
+
+      return this.base(...args);
+    }
+  };
 }
 
 /**
