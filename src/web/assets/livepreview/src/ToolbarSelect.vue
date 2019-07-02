@@ -10,16 +10,8 @@
     <option disabled>───</option>
 
     <template v-for="(opt, index) in options">
-      <option
-        v-if="isDivider(opt)"
-        :key="index"
-        disabled
-      >───</option>
-      <option
-        v-else
-        :key="opt"
-        :value="index"
-      >{{ opt }}</option>
+      <option v-if="isDivider(opt)" :key="index" disabled>───</option>
+      <option v-else :key="opt" :value="index">{{ opt }}</option>
     </template>
   </select>
 </template>

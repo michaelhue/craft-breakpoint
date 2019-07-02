@@ -11,7 +11,7 @@
     @change="change()"
     @keydown.up.prevent="change(+1, $event.shiftKey)"
     @keydown.down.prevent="change(-1, $event.shiftKey)"
-  >
+  />
 </template>
 
 <script>

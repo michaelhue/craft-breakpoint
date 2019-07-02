@@ -32,7 +32,7 @@ export default function createStoragePlugin({
   const reducer = state =>
     paths.reduce(
       (substate, path) =>
-        state.hasOwnProperty(path)
+        state[path]
           ? Object.assign(substate, { [path]: state[path] })
           : substate,
       {}

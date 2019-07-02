@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="bp-toolbar"
-    role="toolbar"
-  >
+  <div class="bp-toolbar" role="toolbar">
     <ToolbarSelect
       class="presets"
       :label="locale.presets"
