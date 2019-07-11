@@ -3,7 +3,35 @@ import { createStore } from "./store";
 import BreakpointEditor from "./BreakpointEditor";
 
 if (process.env.NODE_ENV === "development") {
+  // Enable vue debugging in dev build.
   Vue.config.devtools = true;
+}
+
+/**
+ * Name of the property for attaching the plugin to Craft.Preview.
+ * @type {String}
+ */
+export const BREAKPOINT_PROP = "__breakpoint";
+
+/**
+ * Initialize the editor on a preview instance.
+ * @param {Craft.Preview} target
+ * @param {Object} settings
+ * @return {void}
+ */
+function initEditor(target, settings) {
+  if (target[BREAKPOINT_PROP] !== undefined) {
+    return;
+  }
+
+  const container = target.$previewContainer.get(0);
+  const iframe = target.$iframe.get(0);
+
+  const store = createStore(settings);
+  const editor = createEditor(store, { iframe }).$mount();
+
+  container.appendChild(editor.$el);
+  target[BREAKPOINT_PROP] = editor;
 }
 
 /**
@@ -20,36 +48,33 @@ function createEditor(store, props) {
 }
 
 /**
- * Attach editor to Live Preview instance.
- * @param {Craft.LivePreview}
+ * Returns an object with method overloads for the Craft.Preview object.
  * @param {Object} settings
- * @return {Vue}
+ * @return {Object} An object with overloading functions.
  */
-export default function attachTo(livePreview, settings = {}) {
-  let editor;
+function overloadPreview(settings) {
+  return {
+    // We overload the 'afterUpdateIframe' function because this is the earliest
+    // point in the preview lifecycle where all necessary elements are created.
+    // If an error occurs somewhere we will just bail out and log to console.
+    afterUpdateIframe(...args) {
+      try {
+        initEditor(this, settings);
+      } catch (err) {
+        console.info("[michaelhue/craft-breakpoint]", err);
+      }
 
-  // Live preview enter handler.
-  livePreview.on("enter", () => {
-    if (editor) return;
-
-    // Initialize Vuex store.
-    const store = createStore(settings);
-
-    // Create a dummy iframe for Craft to replace.
-    if (!livePreview.$iframe) {
-      livePreview.$iframe = $('<iframe class="lp-iframe">')
-        .appendTo(livePreview.$iframeContainer);
+      return this.base(...args);
     }
+  };
+}
 
-    // Get livepreview elements.
-    const container = livePreview.$iframeContainer.get(0);
-    const iframe = livePreview.$iframe.get(0);
-
-    // Create our custom editor.
-    editor = createEditor(store, { iframe }).$mount();
-
-    container.appendChild(editor.$el);
-  });
-
-  return editor;
+/**
+ * Attach editor to Craft.Preview object.
+ * @param {Craft.Preview} preview
+ * @param {Object} settings
+ * @return void
+ */
+export default function attachTo(preview, settings = {}) {
+  preview.implement(overloadPreview(settings));
 }

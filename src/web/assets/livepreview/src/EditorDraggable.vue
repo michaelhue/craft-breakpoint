@@ -5,16 +5,10 @@
     :data-axis="axisName"
     role="presentation"
     class="bp-draggable"
-    @dblclick.prevent="expand({ x: 1, y: 1})"
+    @dblclick.prevent="expand({ x: 1, y: 1 })"
   >
-    <div
-      class="handle-x"
-      @dblclick.stop="expand({ x: 1 })"
-    />
-    <div
-      class="handle-y"
-      @dblclick.stop="expand({ y: 1})"
-    />
+    <div class="handle-x" @dblclick.stop="expand({ x: 1 })" />
+    <div class="handle-y" @dblclick.stop="expand({ y: 1 })" />
   </div>
 </template>
 

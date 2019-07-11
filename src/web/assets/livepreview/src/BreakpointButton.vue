@@ -6,10 +6,7 @@
     type="button"
     @click="toggle"
   >
-    <img
-      src="./img/devices.svg"
-      alt="Devices icon"
-    >
+    <img src="./img/devices.svg" alt="Devices icon" />
   </button>
 </template>
 
@@ -23,7 +20,7 @@ export default {
   data() {
     return {
       label: locale.toggle,
-      insertBefore: ".lp-editor > .header > .btn.submit"
+      insertAfter: ".lp-editor-container > header > .btn"
     };
   },
 
@@ -31,8 +28,8 @@ export default {
 
   mounted() {
     // Move the element outside.
-    const target = document.querySelector(this.insertBefore);
-    target.parentNode.insertBefore(this.$el, target);
+    const target = document.querySelector(this.insertAfter);
+    target.after(this.$el);
   },
 
   methods: mapActions(["toggle"])
@@ -45,8 +42,12 @@ export default {
   width: 32px;
   margin: 0 5px;
   padding: 7px;
+  cursor: pointer;
 }
 
+.bp-button.active {
+  border: 1px solid #0d99f2;
+}
 .bp-button.active >>> *,
 .bp-button:active >>> * {
   opacity: 0.6;

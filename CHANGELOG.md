@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0 - 2019-07-11
+
+### Added
+
+-   Added support for Craft `3.2`.
+
+### Changed
+
+-   The "Toggle Viewport Editor" button now has a blue outline when active.
+
 ## 1.2.0 - 2019-02-19
 
 ### Fixed
