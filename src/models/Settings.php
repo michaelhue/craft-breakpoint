@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Copyright (c) Michael Hüneburg
  * @link https://github.com/michaelhue/craft-breakpoint
@@ -9,13 +10,12 @@ namespace michaelhue\breakpoint\models;
 
 use craft\base\Model;
 use craft\helpers\Json;
-use yii\validators\InlineValidator;
 
 /**
  * Settings model for the Breakpoint plugin.
  *
-* @author Michael Hüneburg
-* @since 1.0.0
+ * @author Michael Hüneburg
+ * @since 1.0.0
  */
 class Settings extends Model
 {
@@ -49,7 +49,7 @@ class Settings extends Model
 	public function rules(): array
 	{
 		return [
-			['presets', 'each', 'rule' => ['validatePreset']],
+			['presets', 'validatePresets'],
 			['zoomLevels', 'each', 'rule' => ['number']]
 		];
 	}
@@ -69,23 +69,28 @@ class Settings extends Model
 	}
 
 	/**
-	 * Validate a single preset.
+	 * Validate presets attribute
+	 * Workaround for Yii 2 issue with custom each validators.
+	 *
+	 * @link https://github.com/yiisoft/yii2/issues/18051 Validation issue
 	 */
-	public function validatePreset(string $attribute, $params, $validator): bool
+	public function validatePresets(string $attribute, $params, $validator): bool
 	{
-		$preset = Preset::createFromArray($this->{$attribute});
+		$presets = $this->{$attribute};
 
-		if ($preset->validate()) {
-			$this->{$attribute} = array_values($preset->toArray());
-			return true;
-		}
+		foreach ($presets as $i => $data) {
+			$model = Preset::createFromArray($data);
 
-		// $this->addModelErrors($model, $attrPrefix)
-		$this->addErrors([
-			$attribute => $preset->getErrorSummary(true)
-		]);
+			if ($model->validate()) {
+				$this->{$attribute}[$i] = array_values($model->toArray());
+			} else {
+				$this->addErrors([
+					$attribute => $model->getErrorSummary(true)
+				]);
+			}
+		};
 
-		return false;
+		return $this->hasErrors($attribute);
 	}
 
 	/**

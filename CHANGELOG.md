@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+-   Fixed an error when trying to load the plugin settings page. ([#3](https://github.com/michaelhue/craft-breakpoint/issues/3))
+
 ## 2.0.0 - 2019-07-11
 
 ### Added
