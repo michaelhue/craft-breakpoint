@@ -27,7 +27,10 @@ function initEditor(target, settings) {
   }
 
   const container = target.$previewContainer.get(0);
-  const iframe = target.$iframe.get(0);
+
+  const iframe = target.$iframeContainer
+    ? target.$iframeContainer.get(0)
+    : target.$iframe.get(0);
 
   const store = createStore(settings);
   const editor = createEditor(store, { iframe }).$mount();
