@@ -12,8 +12,8 @@ export default {
     iframe: {
       type: Object,
       required: true,
-      validate: x => x instanceof HTMLElement
-    }
+      validate: (x) => x instanceof HTMLElement,
+    },
   },
 
   computed: {
@@ -24,19 +24,19 @@ export default {
       return {
         width: x ? `${x}px` : "100%",
         height: y ? `${y}px` : "100%",
-        transform: `scale(${this.scale})`
+        transform: `scale(${this.scale})`,
       };
     },
 
     enabledStyle() {
       return this.enabled ? this.style : null;
-    }
+    },
   },
 
   mounted() {
     // Move outside iframe to component.
     this.$el.appendChild(this.iframe);
-  }
+  },
 };
 </script>
 
@@ -55,7 +55,7 @@ export default {
   box-shadow: 0 1px 16px rgba(0, 0, 20, 0.2);
 }
 
-.bp-viewport >>> iframe {
+.bp-viewport >>> * {
   width: 100%;
   height: 100%;
 }
