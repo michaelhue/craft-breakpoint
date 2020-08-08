@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       label: locale.toggle,
-      insertAfter: ".lp-editor-container > header > .btn"
+      insertAfter: ".lp-editor-container > header > .btn",
     };
   },
 
@@ -32,22 +32,19 @@ export default {
     target.after(this.$el);
   },
 
-  methods: mapActions(["toggle"])
+  methods: mapActions(["toggle"]),
 };
 </script>
 
 <style scoped>
 .bp-button {
   position: relative;
-  width: 32px;
+  width: 34px;
   margin: 0 5px;
   padding: 7px;
   cursor: pointer;
 }
 
-.bp-button.active {
-  border: 1px solid #0d99f2;
-}
 .bp-button.active >>> *,
 .bp-button:active >>> * {
   opacity: 0.6;
