@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.0 - 2020-08-08
+
+### Fixed
+
+-   Fixed an error when trying to load the plugin settings page. ([#3](https://github.com/michaelhue/craft-breakpoint/issues/3))
+-   Fixed compatibility with Craft `3.4.28` and newer.
+
+### Changed
+
+-   Updated style of the "Toggle Viewport Editor" button to match the Control Panel.
+
 ## 2.0.0 - 2019-07-11
 
 ### Added

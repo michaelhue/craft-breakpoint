@@ -27,17 +27,17 @@ export default {
     EditorDraggable,
     EditorStage,
     EditorToolbar,
-    EditorViewport
+    EditorViewport,
   },
 
   props: {
     iframe: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  computed: mapGetters(["enabled", "dragging"])
+  computed: mapGetters(["enabled", "dragging"]),
 };
 </script>
 
@@ -48,6 +48,10 @@ export default {
   height: 100%;
   background-color: #f7f7f7;
   overflow: hidden;
+}
+
+* + .bp-editor {
+  border-top: 1px solid rgba(63, 77, 90, 0.2);
 }
 
 .dragging .bp-editor {
