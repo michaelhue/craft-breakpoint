@@ -4,7 +4,9 @@ import BreakpointEditor from "./BreakpointEditor";
 
 if (process.env.NODE_ENV === "development") {
   // Enable vue debugging in dev build.
-  Vue.config.devtools = true;
+  // Disabled for now since it triggers errors in vue-devtools@5.*
+  // https://github.com/vuejs/vue-devtools/issues/874
+  // Vue.config.devtools = true;
 }
 
 /**
@@ -54,17 +56,19 @@ function createEditor(store, props) {
  */
 function overloadPreview(settings) {
   return {
-    // We overload the 'afterUpdateIframe' function because this is the earliest
-    // point in the preview lifecycle where all necessary elements are created.
-    // If an error occurs somewhere we will just bail out and log to console.
-    afterUpdateIframe(...args) {
-      try {
-        initEditor(this, settings);
-      } catch (err) {
-        console.info("[michaelhue/craft-breakpoint]", err);
-      }
+    // Hook into the init function to attach an event listener.
+    init(...args) {
+      // Let preview initalize normally.
+      this.base(...args);
 
-      return this.base(...args);
+      // Wait for iframe updates for initializing the editor.
+      this.on("afterUpdateIframe", () => {
+        try {
+          initEditor(this, settings);
+        } catch (err) {
+          console.info("[michaelhue/craft-breakpoint]", err);
+        }
+      });
     }
   };
 }
