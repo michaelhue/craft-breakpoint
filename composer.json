@@ -1,6 +1,6 @@
 {
   "name": "michaelhue/craft-breakpoint",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "type": "craft-plugin",
   "description": "Test your responsive layouts on various screen sizes in Live Preview.",
   "keywords": [
