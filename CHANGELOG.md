@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.1 - 2020-08-10
+
+### Fixed
+
+-   Fixed Plugin Store connection.
+
 ## 2.2.0 - 2020-08-08
 
 ### Added
