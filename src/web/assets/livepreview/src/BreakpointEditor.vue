@@ -43,15 +43,17 @@ export default {
 
 <style scoped>
 .bp-editor {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
   background-color: #f7f7f7;
   overflow: hidden;
 }
 
-* + .bp-editor {
-  border-top: 1px solid rgba(63, 77, 90, 0.2);
+.lp-preview-container .lp-preview-header + .bp-editor {
+  top: 51px;
 }
 
 .dragging .bp-editor {
