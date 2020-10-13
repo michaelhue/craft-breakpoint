@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+-   Fixed viewport editor overlaying the preview target selector in Webkit browsers. ([#4](https://github.com/michaelhue/craft-breakpoint/issues/4))
+
 ## 2.2.1 - 2020-08-10
 
 ### Fixed
